@@ -1,6 +1,12 @@
 # WatchTime
 
-WatchTime is where users can view detailed information about movies and read or add reviews about those movies. Users also have access to their own personal watch list where they can keep track of what they plan to watch, are watching, or have watched. Inspired by Goodreads.
+WatchTime is a website where users can view detailed information about movies as well as read or add reviews about any movie.
+  - Users will be able to add movies to their own personal watch list and they will be able to set the status of that movie to any of the following: 
+    - Watched
+    - Want to Watch
+    - Currently Watching
+  - Users will be able to view information about movies as well as reviews left by other users.
+  - Users will also be able to write their own reviews for any movie.
 
 ## Technologies Used
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
