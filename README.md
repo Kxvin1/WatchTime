@@ -1,5 +1,7 @@
 # WatchTime
 
+WatchTime is where users can view detailed information about movies and read or add reviews about those movies. Users also have access to their own personal watch list where they can keep track of what they plan to watch, are watching, or have watched. Inspired by Goodreads.
+
 ## Technologies Used
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 ![Pug](https://img.shields.io/badge/Pug-FFF?style=for-the-badge&logo=pug&logoColor=A86454)
