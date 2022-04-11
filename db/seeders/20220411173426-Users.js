@@ -9,7 +9,7 @@ module.exports = {
       Example:
       */
    return queryInterface.bulkInsert('Users', [
-     {username: "Demo", email: "demo@demo.com", hashedPassword: ""}
+     {username: "Demo", email: "demo@demo.com", hashedPassword: "", createdAt: new Date(), updatedAt: new Date()}
    ], {});
   },
 
