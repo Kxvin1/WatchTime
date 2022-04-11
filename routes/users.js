@@ -1,4 +1,6 @@
 var express = require('express');
+const bcrpt = require('bcryptjs');
+
 var router = express.Router();
 
 /* GET users listing. */
