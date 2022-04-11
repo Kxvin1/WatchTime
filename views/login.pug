@@ -1,15 +1,20 @@
 extends layout.pug
 
 block content
+    if errors 
+        div
+            p The following error(s) occurred:
+            ul
+                each error in errors
+                    li= error
     h2 Login
     form(action="/user/login" method='post')
         input(type='hidden' name='_csrf' value=csrfToken)
 
         label(for="email") Email
-        input(type="email" name='email' value=email)
+        input(type="email" name='email' required)
 
         label(for='password') Password
-        input(type='password' name='password')
+        input(type='password' name='password' required)
 
-        label(for='submit') Login
-        input(type='submit' name='submit')
+        button(type='submit' name='submit') Login 

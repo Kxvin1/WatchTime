@@ -4,6 +4,7 @@ const { csrfProtection, asyncHandler } = require('./utils');
 const { check, validationResult } = require('express-validator');
 const db = require('../db/models');
 var router = express.Router();
+const { loginUser, logoutUser, requireAuth, restoreUser } = require('../auth');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -19,7 +20,7 @@ router.get('/login', csrfProtection, asyncHandler(async (req, res, next) => {
 }))
 
 const loginValidators = [
-  check('emailAddress')
+  check('email')
     .exists({ checkFalsy: true })
     .withMessage('Please provide a valid Email Address.'),
   check('password')
