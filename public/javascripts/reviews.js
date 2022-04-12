@@ -1,5 +1,6 @@
 const movieLink = window.location.href.split("/");
-const movieId = movieLink[2];
+console.log("movielink++", movieLink)
+const movieId = movieLink[4];
 
 const reviewForm = document.querySelector("#reviewSubBtn");
 reviewForm.addEventListener("submit", async (event) => {
@@ -12,7 +13,7 @@ reviewForm.addEventListener("submit", async (event) => {
     if (!review.length) {
         return; 
     }
-    const oldReviews = await fetch(`/movies/${movieId}/reviews`, {
+    const oldReviews = await fetch(`http://localhost:8080/movies`, {
         method: 'POST',
         body: JSON.stringify(body),
         header: {
