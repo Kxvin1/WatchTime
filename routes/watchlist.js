@@ -24,7 +24,7 @@ router.get('/', asyncHandler( async(req, res, next) => {
     const userId = req.session.auth ? req.session.auth.userId : 1; // not passing because not logged in (need to create pug file and sign in?)
     const username = req.session.auth ? req.session.auth.username: 'Demo';
 
-    const genres = db.Genre.findAll();
+    // const genres = await db.Genre.findAll();
     const watchStatus = ['Plan to Watch', 'Watching', 'Have Watched']
 
     const planToWatchMoviesShelf = await findShelf("Plan to Watch", userId);
@@ -32,11 +32,10 @@ router.get('/', asyncHandler( async(req, res, next) => {
     const haveWatchedMoviesShelf = await findShelf("Have Watched", userId);
 
     res.render('watchlist', {
-        title: username,
+        username,
         planToWatchMoviesShelf,
         watchingMoviesShelf,
         haveWatchedMoviesShelf,
-        genres,
         watchStatus
     })
 }))
