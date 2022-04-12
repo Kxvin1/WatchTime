@@ -20,6 +20,12 @@ block content
 
         div
             h2 Leave Your Review
+            if errors
+                div(class="review-errors" role="alert")
+                    p The following error(s) occured:
+                    ul
+                        each error in errors
+                            li= error
             form(action=`/movies/review/new`, method="post")
                 input(type="hidden", name="movieId", value=movieData.id)
                 label(for="review")

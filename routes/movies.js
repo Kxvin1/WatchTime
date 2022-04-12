@@ -46,6 +46,7 @@ router.get(
       },
     });
     res.render("movie-detail", {
+      title: `${movieData.title}`,
       movieData,
       reviews,
     });
@@ -65,11 +66,7 @@ router.post(
 
     console.log(req.body);
 
-    const userId = req.session.auth ? req.session.auth.userId : 1; // not passing because not logged in (need to create pug file and sign in?)
-    // const reqKeys = Object.keys(req);
-    // console.log(reqKeys);
-    // console.log("params:  ", req.params);
-    // const movieId = req.params.movieId;
+    const userId = req.session.auth ? req.session.auth.userId : 1; // todo: edit this later to allow other users to be authenticated
     const reviews = await db.Review.findAll({
       where: { movieId },
     });
@@ -79,12 +76,19 @@ router.post(
       review,
     });
 
-    // if errors (map through errors and res.render)
-    // res.render("movie-detail", { title: "Review", reviewText, reviews });
+    const validatorErrors = validationResult(req);
 
-    // if no errors
-    res.save();
-    res.redirect(`/movies/${movieId}`);
+    if (validatorErrors.isEmpty()) {
+      await reviewText.save();
+      res.redirect(`/movies/${movieId}`);
+    } else {
+      const errors = validatorErrors.array().map((error) => error.msg);
+      res.render("movie-detail", {
+        reviewText,
+        reviews,
+        errors,
+      });
+    }
   })
 );
 
