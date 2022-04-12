@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       review: {
+        allowNull: false,
         type: DataTypes.TEXT(255),
       },
     },
