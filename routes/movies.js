@@ -35,8 +35,12 @@ router.get(
       where: {
         id: movieId,
       },
+      // include: Genre,
     });
-    res.json({ movieData });
+    console.log(movieData);
+    res.render("movie-detail", {
+      movieData,
+    });
   })
 );
 

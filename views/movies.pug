@@ -1,8 +1,8 @@
 extends layout.pug
 
 block content
-    div(class="movieRow")
+    div(class="movie-row")
         each movie in movieDatabase
-            div(class="movieBlock")
+            div(class="movie-block")
                 a(href=`/movies/${movie.id}`)
-                    img(class="moviePoster" src=movie.image)
+                    img(class="movie-poster" src=movie.image)
