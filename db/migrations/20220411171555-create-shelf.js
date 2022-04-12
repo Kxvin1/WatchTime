@@ -16,7 +16,6 @@ module.exports = {
       watchStatus: {
         allowNull: false,
         type: Sequelize.STRING,
-        unique: true
       },
       createdAt: {
         allowNull: false,

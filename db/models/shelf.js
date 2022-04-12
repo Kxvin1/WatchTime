@@ -10,7 +10,6 @@ module.exports = (sequelize, DataTypes) => {
       watchStatus: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
       },
     },
     {}

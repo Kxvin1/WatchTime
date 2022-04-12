@@ -130,6 +130,21 @@ router.post('/register', csrfProtection, userValidators,
       const hashedPassword = await bcrypt.hash(password, 10);//
       user.hashedPassword = hashedPassword;
       await user.save();
+
+      // Create the user's shelves
+      const planToWatchShelf = await db.Shelf.create({
+        userId: user.id,
+        watchStatus: "Plan to Watch"
+      });
+      const watchingShelf = await db.Shelf.create({
+        userId: user.id,
+        watchStatus: "Watching"
+      });
+      const watchedShelf = await db.Shelf.create({
+        userId: user.id,
+        watchStatus: "Have Watched"
+      });
+
       loginUser(req, res, user);
       res.redirect('/');
 
