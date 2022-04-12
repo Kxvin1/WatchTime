@@ -27,4 +27,21 @@ router.get(
   })
 );
 
+router.post(
+  "/:movieId/reviews", reviewValidator, 
+  asyncHandler(async (req, res) => {
+    const { review } = req.body;
+    const { userId } = req.session.auth; 
+    const { movieId } = req.params.movieId; 
+    const reviewText = await db.Review.create({
+      userId,
+      movieId,
+      review, 
+    })
+    console.log(reviewText)
+    return res.json( { reviewText })
+  })
+)
+
+
 module.exports = router;
