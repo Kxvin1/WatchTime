@@ -38,7 +38,8 @@ router.get(
         movieId
       },
     });
-    res.json({ reviews });
+    // res.json({ reviews });
+    res.render('reviews', { title: 'Review', reviews})
   })
 );
 
@@ -58,7 +59,7 @@ router.post(
       movieId,
       review,
     });
-    return res.json({ reviewText });
+    // return res.json({ reviewText });
   })
 );
 

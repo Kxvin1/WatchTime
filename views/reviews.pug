@@ -1,1 +1,8 @@
 extends layout.pug
+
+block content
+    h2 Leave Your Review 
+    form(action=`/movies/${movieId}/reviews`, method="Get")
+        label(for="review")
+        input(type="text" name="review" placeholder="enter your review...")
+        button(type="submit") Submit review
