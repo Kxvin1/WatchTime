@@ -6,12 +6,14 @@ const logger = require("morgan");
 const { sequelize } = require("./db/models");
 const session = require("express-session");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
+
+const { sessionSecret } = require("./config");
+const { restoreUser } = require("./auth");
+
 const indexRouter = require("./routes/index");
 const userRouter = require("./routes/user");
 const watchlistRouter = require("./routes/watchlist");
-const movieRouter = require("./routes/reviews");
-const { sessionSecret } = require("./config");
-const { restoreUser } = require("./auth");
+const movieRouter = require("./routes/movies");
 
 const app = express();
 

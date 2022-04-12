@@ -1,0 +1,41 @@
+extends layout.pug
+
+block content
+    div(class="movie-page-header")
+        div(class="movie-header")
+            div(class="movie-title-container")
+                h1(id="movie-title")= movieData.title
+            div(class="movie-image-container")
+                img(class="movie-poster" src=movieData.image)
+        div(class="movie-info")
+            h2(class="synopsis") Synopsis
+            p(class="synopsis-text")= movieData.synopsis
+
+            div(class="movie-details")
+                h3=`Genre: ${movieData.Genre.genre}`
+                h3=`Rating: ${movieData.imDbRating}`
+                h3=`Runtime: ${movieData.runtime}`
+                h3=`Year: ${movieData.year}`
+
+
+        div
+            h2 Leave Your Review
+            if errors
+                div(class="review-errors" role="alert")
+                    p The following error(s) occured:
+                    ul
+                        each error in errors
+                            li= error
+            form(action=`/movies/review/new`, method="post")
+                input(type="hidden", name="movieId", value=movieData.id)
+                label(for="review")
+
+                input(type="text" name="review" placeholder="Enter Your Review...")
+                button(type="submit" id="reviewSubBtn") Submit Review
+        div
+            h2 Reviews
+            ul
+                //- script(src="/javascripts/reviews.js")
+                if reviews
+                    for review in reviews
+                        li=review.review
