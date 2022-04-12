@@ -1,1 +1,31 @@
 extends layout.pug
+
+block content
+    h1 `#{username}'s Watch List`
+    table
+        thead
+            tr
+                th.watchColor
+                th Image
+                th Movie Title
+                th Genre
+                th Watch Status
+                th.buttons
+                th.edit.hidden
+        tbody
+            each movie in planToWatchMoviesShelf
+                tr
+                    td.planToWatchColor
+                    td= movie.image
+                    td= movie.title
+                    td= "Action"
+                    td= watchStatus[0]
+                    td
+                        button.edit(type='button' name='editBtn') Edit
+                        button(type='button' name='deleteBtn') Delete
+                    td.dropdown.hidden
+                        select(name="watchStatus" value='Plan to Watch')
+                            option(name='Plan to Watch' value='Plan to Watch') Plan to Watch
+                            option(name='Watching' value='Watching') Watching
+                            option(name='Have Watched' value='Have Watched') Have Watched
+    script(src="/javascripts/watchlists.js")

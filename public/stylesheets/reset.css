@@ -25,3 +25,23 @@ body, header, nav {
 h1 {
   font-size: 2rem;
 }
+
+.hidden {
+  display: none;
+}
+
+.displayed{
+  display: table-cell;
+}
+
+.planToWatchColor{
+  background-color: red;
+}
+
+.watchingColor{
+  background-color: blue;
+}
+
+.haveWatchedColor{
+  background-color: green;
+}
