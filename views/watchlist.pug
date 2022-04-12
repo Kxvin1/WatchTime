@@ -1,1 +1,27 @@
 extends layout.pug
+
+block content
+    h1 title=`#{title}'s Watch List`
+    table
+        thead
+            tr.watchColor
+            tr Image
+            tr Movie Title
+            tr Genre
+            tr Watch Status
+            tr.buttons
+        tbody
+            each movie in planToWatchMoviesShelf
+                td.red
+                td= movie.image
+                td= movie.title
+                td= genres[movie.genreId - 1]
+                td= watchStatus[0]
+                    span
+                        select(name="watchStatus" value='Plan to Watch')
+                            option(name='Plan to Watch')
+                            option(name='Watching')
+                            option(name='Have Watched')
+                td
+                    button(type='button' name='editBtn') Edit
+                    button(type='button' name='deleteBtn') Delete

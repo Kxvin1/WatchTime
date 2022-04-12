@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     //   + Shelves Table
     // - Many to Many: Shelf hasMany Movie
     const columnMapping = {
-      through: "watchList",
+      through: "WatchList",
       otherKey: "movieId",
       foreignKey: "shelfId",
     };
