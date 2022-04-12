@@ -37,27 +37,32 @@ router.get(
       },
       // include: Genre,
     });
-    console.log(movieData);
-    res.render("movie-detail", {
-      movieData,
-    });
-  })
-);
-
-// get reviews for a movie
-router.get(
-  "/:movieId/reviews",
-  asyncHandler(async (req, res, next) => {
-    const movieId = req.params.movieId;
     const reviews = await db.Review.findAll({
       where: {
         movieId,
       },
     });
-    // res.json({ reviews });
-    res.render("reviews", { title: "Review", reviews });
+    res.render("movie-detail", {
+      movieData,
+      reviews,
+    });
   })
 );
+
+// get reviews for a movie
+// router.get(
+//   "/:movieId/reviews",
+//   asyncHandler(async (req, res, next) => {
+// const movieId = req.params.movieId;
+// const reviews = await db.Review.findAll({
+//   where: {
+//     movieId,
+//   },
+// });
+// res.json({ reviews });
+//     res.render("reviews", { title: "Review", reviews });
+//   })
+// );
 
 // post a review
 router.post(
@@ -84,7 +89,7 @@ router.post(
       review,
     });
     // return res.json({ reviewText });
-    res.render("reviews", { title: "Review", reviewText, reviews });
+    res.render("movie-detail", { title: "Review", reviewText, reviews });
   })
 );
 

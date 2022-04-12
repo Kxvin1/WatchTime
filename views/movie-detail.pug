@@ -20,7 +20,7 @@ block content
 
         div
             h2 Leave Your Review
-            form(action=`/movies/${reviewText.movieId}/reviews`, method="post")
+            form(action=`/movies/${movieId}`, method="post")
                 //- input(type="hidden", name=“movieId”, value=movie.id)
                 label(for="review")
                 input(type="text" name="review" placeholder="enter your review...")
