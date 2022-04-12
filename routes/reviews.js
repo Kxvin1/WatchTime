@@ -14,6 +14,7 @@ const reviewValidator = [
     .withMessage("Review must be less than 255 characters."),
 ];
 
+// get specific movie
 router.get(
   "/:movieId",
   asyncHandler(async (req, res, next) => {
@@ -27,21 +28,69 @@ router.get(
   })
 );
 
+// get reviews for a movie
+router.get(
+  "/:movieId/reviews",
+  asyncHandler(async (req, res, next) => {
+    const movieId = req.params.movieId;
+    const reviews = await db.Review.findAll({
+      where: {
+        id: movieId,
+      },
+    });
+    res.json({ reviews });
+  })
+);
+
+// post a review
 router.post(
-  "/:movieId/reviews", reviewValidator, 
+  "/:movieId/reviews",
+  reviewValidator,
   asyncHandler(async (req, res) => {
+    console.log(req.session); // => Session {
+    //     cookie: { path: '/', _expires: null, originalMaxAge: null, httpOnly: true }
+    //   }
     const { review } = req.body;
-    const { userId } = req.session.auth; 
-    const { movieId } = req.params.movieId; 
+    const { userId } = req.session.auth; // not passing because not logged in (need to create pug file and sign in?)
+    const { movieId } = req.params.movieId;
     const reviewText = await db.Review.create({
       userId,
       movieId,
-      review, 
-    })
-    console.log(reviewText)
-    return res.json( { reviewText })
+      review,
+    });
+    return res.json({ reviewText });
   })
-)
+);
 
+// update a review
+router.put(
+  "/:movieId/reviews/:reviewId",
+  reviewValidator,
+  asyncHandler(async (req, res) => {
+    const specificReview = await db.Review.findByPk(req.params.reviewId);
+    const { review } = req.body;
+    if (specificReview) {
+      await specificReview.update({
+        review,
+      });
+      res.json({
+        specificReview,
+      });
+    }
+  })
+);
+
+// delete a review
+router.delete(
+  "/:movieId/reviews/:reviewId",
+  asyncHandler(async (req, res) => {
+    const specificReview = await db.Review.findByPk(req.params.reviewId);
+
+    if (specificReview) {
+      await specificReview.destroy();
+      res.status(201).json({ message: "deleted successfully" });
+    }
+  })
+);
 
 module.exports = router;
