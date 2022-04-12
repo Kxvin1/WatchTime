@@ -60,6 +60,7 @@ router.post(
       review,
     });
     // return res.json({ reviewText });
+    res.render('reviews', { title: 'Review', reviewText})
   })
 );
 
