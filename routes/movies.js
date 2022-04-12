@@ -35,8 +35,11 @@ router.get(
       where: {
         id: movieId,
       },
-      // include: Genre,
+      include: db.Genre,
     });
+
+    console.log("~~~~~~~~~~~~~~~~~~~~~~~", movieData);
+
     const reviews = await db.Review.findAll({
       where: {
         movieId,
@@ -49,47 +52,39 @@ router.get(
   })
 );
 
-// get reviews for a movie
-// router.get(
-//   "/:movieId/reviews",
-//   asyncHandler(async (req, res, next) => {
-// const movieId = req.params.movieId;
-// const reviews = await db.Review.findAll({
-//   where: {
-//     movieId,
-//   },
-// });
-// res.json({ reviews });
-//     res.render("reviews", { title: "Review", reviews });
-//   })
-// );
-
 // post a review
 router.post(
-  "/:movieId/reviews",
+  "/review/new",
   reviewValidator,
   asyncHandler(async (req, res) => {
     // console.log(req.session); // => Session {
     //     cookie: { path: '/', _expires: null, originalMaxAge: null, httpOnly: true }
     //   }
 
-    const { review } = req.body;
+    const { review, movieId } = req.body;
+
     console.log(req.body);
+
     const userId = req.session.auth ? req.session.auth.userId : 1; // not passing because not logged in (need to create pug file and sign in?)
-    const reqKeys = Object.keys(req);
+    // const reqKeys = Object.keys(req);
     // console.log(reqKeys);
-    console.log("params:  ", req.params);
-    const movieId = req.params.movieId;
+    // console.log("params:  ", req.params);
+    // const movieId = req.params.movieId;
     const reviews = await db.Review.findAll({
       where: { movieId },
     });
-    const reviewText = await db.Review.create({
+    const reviewText = await db.Review.build({
       userId,
       movieId,
       review,
     });
-    // return res.json({ reviewText });
-    res.render("movie-detail", { title: "Review", reviewText, reviews });
+
+    // if errors (map through errors and res.render)
+    // res.render("movie-detail", { title: "Review", reviewText, reviews });
+
+    // if no errors
+    res.save();
+    res.redirect(`/movies/${movieId}`);
   })
 );
 

@@ -12,7 +12,7 @@ block content
             p(class="synopsis-text")= movieData.synopsis
 
             div(class="movie-details")
-                h3=`Genre: ${genre}`
+                h3=`Genre: ${movieData.Genre.genre}`
                 h3=`Rating: ${movieData.imDbRating}`
                 h3=`Runtime: ${movieData.runtime}`
                 h3=`Year: ${movieData.year}`
@@ -20,11 +20,12 @@ block content
 
         div
             h2 Leave Your Review
-            form(action=`/movies/${movieId}`, method="post")
-                //- input(type="hidden", name=“movieId”, value=movie.id)
+            form(action=`/movies/review/new`, method="post")
+                input(type="hidden", name="movieId", value=movieData.id)
                 label(for="review")
-                input(type="text" name="review" placeholder="enter your review...")
-                button(type="submit" id="reviewSubBtn") Submit review
+
+                input(type="text" name="review" placeholder="Enter Your Review...")
+                button(type="submit" id="reviewSubBtn") Submit Review
         div
             h2 Reviews
             ul
