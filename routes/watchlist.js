@@ -23,22 +23,13 @@ async function findShelf (watchStatus, userId) {
 router.get('/', asyncHandler( async(req, res, next) => {
     const userId = req.session.auth ? req.session.auth.userId : 1; // not passing because not logged in (need to create pug file and sign in?)
     const username = req.session.auth ? req.session.auth.username: 'Demo';
-    // const movieData = await db.Movie.findOne({
-    //     where: {
-    //       id: movieId,
-    //     },
-    //     include: db.Genre,
-    //   });
 
     const genres = await db.Genre.findAll();
-    console.log(genres[0]);
     const watchStatus = ['Plan to Watch', 'Watching', 'Have Watched']
 
     const planToWatchMoviesShelf = await findShelf("Plan to Watch", userId);
     const watchingMoviesShelf = await findShelf("Watching", userId);
     const haveWatchedMoviesShelf = await findShelf("Have Watched", userId);
-
-    console.log(planToWatchMoviesShelf);
 
     res.render('watchlist', {
         username,
