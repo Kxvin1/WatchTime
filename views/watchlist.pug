@@ -16,9 +16,10 @@ block content
             each movie in planToWatchMoviesShelf
                 tr
                     td.planToWatchColor
-                    td= movie.image
+                    td
+                        img(src=movie.image)
                     td= movie.title
-                    td= "Action"
+                    td= genres[movie.genreId - 1].genre
                     td= watchStatus[0]
                     td
                         button.edit(type='button' name='editBtn') Edit
