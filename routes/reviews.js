@@ -35,7 +35,7 @@ router.get(
     const movieId = req.params.movieId;
     const reviews = await db.Review.findAll({
       where: {
-        id: movieId,
+        movieId: movieId,
       },
     });
     res.json({ reviews });
@@ -51,8 +51,8 @@ router.post(
     //     cookie: { path: '/', _expires: null, originalMaxAge: null, httpOnly: true }
     //   }
     const { review } = req.body;
-    const { userId } = req.session.auth; // not passing because not logged in (need to create pug file and sign in?)
-    const { movieId } = req.params.movieId;
+    const userId = req.session.auth ? req.session.auth.userId : 1; // not passing because not logged in (need to create pug file and sign in?)
+    const movieId = req.params.movieId;
     const reviewText = await db.Review.create({
       userId,
       movieId,
@@ -84,11 +84,23 @@ router.put(
 router.delete(
   "/:movieId/reviews/:reviewId",
   asyncHandler(async (req, res) => {
-    const specificReview = await db.Review.findByPk(req.params.reviewId);
+    // auth
+    const review = await db.Review.findOne({
+      where: {
+        id: req.params.reviewId,
+      },
+    });
+    // console.log("eview.userId: " + review.userId)
+    const curUserId = req.session.auth ? req.session.auth.userId : 1; 
+    if (curUserId == review.userId) {
+      const specificReview = await db.Review.findByPk(req.params.reviewId);
 
-    if (specificReview) {
-      await specificReview.destroy();
-      res.status(201).json({ message: "deleted successfully" });
+      if (specificReview) {
+        await specificReview.destroy();
+        res.status(201).json({ message: "deleted successfully" });
+      }
+    } else {
+      res.status(201).json({ message: "deleted unsuccessfully" });
     }
   })
 );
