@@ -35,7 +35,7 @@ router.get(
     const movieId = req.params.movieId;
     const reviews = await db.Review.findAll({
       where: {
-        movieId: movieId,
+        movieId
       },
     });
     res.json({ reviews });
@@ -45,7 +45,7 @@ router.get(
 // post a review
 router.post(
   "/:movieId/reviews",
-  reviewValidator,
+  reviewValidator, 
   asyncHandler(async (req, res) => {
     console.log(req.session); // => Session {
     //     cookie: { path: '/', _expires: null, originalMaxAge: null, httpOnly: true }
@@ -97,10 +97,10 @@ router.delete(
 
       if (specificReview) {
         await specificReview.destroy();
-        res.status(201).json({ message: "deleted successfully" });
+        res.status(200).json({ message: "deleted successfully" });
       }
     } else {
-      res.status(201).json({ message: "deleted unsuccessfully" });
+      res.status(200).json({ message: "deleted unsuccessfully" });
     }
   })
 );
