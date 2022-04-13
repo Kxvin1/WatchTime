@@ -43,7 +43,7 @@ block content
                     td= watchStatus[1]
                     td
                         button.edit(id=`${movie.id}` type='button' name='editBtn') Edit
-                        button(type='button' name='deleteBtn') Delete
+                        button.delete(type='button' name='deleteBtn') Delete
                     td.dropdown.hidden(id=`select-${movie.id}`)
                         select(name="watchStatus" value='Plan to Watch')
                             option(name='Plan to Watch' value='Plan to Watch') Plan to Watch
@@ -61,7 +61,7 @@ block content
                     td= watchStatus[2]
                     td
                         button.edit(id=`${movie.id}` type='button' name='editBtn') Edit
-                        button(type='button' name='deleteBtn') Delete
+                        button.delete(type='button' name='deleteBtn') Delete
                     td.dropdown.hidden(id=`select-${movie.id}`)
                         select(name="watchStatus" value='Plan to Watch')
                             option(name='Plan to Watch' value='Plan to Watch') Plan to Watch
