@@ -9,7 +9,7 @@ const router = express.Router();
 const reviewValidator = [
   check("review")
     .exists({ checkFalsy: true })
-    .withMessage("Please provide a message")
+    .withMessage("Review can't be empty.")
     .isLength({ max: 255 })
     .withMessage("Review must be less than 255 characters."),
 ];
@@ -29,6 +29,7 @@ router.get(
 // get specific movie
 router.get(
   "/:movieId",
+  reviewValidator,
   asyncHandler(async (req, res, next) => {
     const movieId = req.params.movieId;
     const movieData = await db.Movie.findOne({
@@ -38,12 +39,11 @@ router.get(
       include: db.Genre,
     });
 
-    console.log("~~~~~~~~~~~~~~~~~~~~~~~", movieData);
-
     const reviews = await db.Review.findAll({
       where: {
         movieId,
       },
+      order: [["id", "DESC"]],
     });
     res.render("movie-detail", {
       title: `${movieData.title}`,
@@ -58,17 +58,19 @@ router.post(
   "/review/new",
   reviewValidator,
   asyncHandler(async (req, res) => {
-    // console.log(req.session); // => Session {
-    //     cookie: { path: '/', _expires: null, originalMaxAge: null, httpOnly: true }
-    //   }
-
     const { review, movieId } = req.body;
 
-    console.log(req.body);
+    const movieData = await db.Movie.findOne({
+      where: {
+        id: movieId,
+      },
+      include: db.Genre,
+    });
 
     const userId = req.session.auth ? req.session.auth.userId : 1; // todo: edit this later to allow other users to be authenticated
     const reviews = await db.Review.findAll({
       where: { movieId },
+      order: [["id", "DESC"]],
     });
     const reviewText = await db.Review.build({
       userId,
@@ -84,6 +86,8 @@ router.post(
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
       res.render("movie-detail", {
+        title: `${movieData.title}`,
+        movieData,
         reviewText,
         reviews,
         errors,
@@ -120,7 +124,6 @@ router.delete(
         id: req.params.reviewId,
       },
     });
-    // console.log("eview.userId: " + review.userId)
     const curUserId = req.session.auth ? req.session.auth.userId : 1;
     if (curUserId == review.userId) {
       const specificReview = await db.Review.findByPk(req.params.reviewId);
