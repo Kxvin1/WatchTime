@@ -60,4 +60,19 @@ router.put('/:watchlistId', asyncHandler( async(req, res, next) => {
     // refresh the watchlist
 }))
 
+router.delete('/:watchlistId', asyncHandler( async(req, res) => {
+    const currWatchlist = await db.WatchList.findOne({
+        where: {
+          id: req.params.watchlistId
+        }
+      })
+
+      if (currReview) {
+        await currReview.destroy()
+        res.status(200).json({ message: "Review Deletion Successful" })
+      } else {
+        res.status(400).json({ message: "Review Deletion Unsuccessful" })
+      }
+}))
+
 module.exports = router;

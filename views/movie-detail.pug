@@ -38,6 +38,13 @@ block content
                 script(src="/javascripts/reviews.js")
                 if reviews
                     for review in reviews
-                        li=review.review
-                        button(class="review-edit-btn" type="button") Edit
-                        button.delete(id=`${review.id}` type="button") Delete
+                        div.review(id=`${review.id}`)
+                            input(type="hidden", name="reviewId", value=review.id)
+                            li(id=`review-${review.id}`)=review.review
+                            button(class="review-edit-btn" type="button") Edit
+                            button.delete(id=`delete-${review.id}` type="button") Delete
+                            form.hidden(action=`/movies/review/${review.id}` method='post' id=`edit-form-${review.id}`)
+                                input(type="hidden", name="movieId", value=movieData.id)
+                                input(type="hidden", name="review", value=review.review)
+                                input(id=`new-review-${review.id}` type="text", name="newReview", placeholder=review.review)
+                                button(id=`edit-review-submit-${review.id}` type="submit", name="review-edit-submit") Submit
