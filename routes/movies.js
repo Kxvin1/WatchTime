@@ -117,24 +117,19 @@ router.put(
 
 // delete a review
 router.delete(
-  "/review/delete",
+  "/review/:reviewId",
   asyncHandler(async (req, res) => {
-    // auth
-    const review = await db.Review.findOne({
+    const currReview = await db.Review.findOne({
       where: {
-        id: req.params.reviewId,
-      },
-    });
-    const curUserId = req.session.auth ? req.session.auth.userId : 1;
-    if (curUserId == review.userId) {
-      const specificReview = await db.Review.findByPk(req.params.reviewId);
-
-      if (specificReview) {
-        await specificReview.destroy();
-        res.status(200).json({ message: "deleted successfully" }); // 204?
+        id: req.params.reviewId
       }
+    })
+
+    if (currReview) {
+      await currReview.destroy()
+      res.status(200).json({ message: "Review Deletion Successful" })
     } else {
-      res.status(200).json({ message: "deleted unsuccessfully" });
+      res.status(400).json({ message: "Review Deletion Unsuccessful" })
     }
   })
 );

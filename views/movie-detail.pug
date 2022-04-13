@@ -38,6 +38,8 @@ block content
                 script(src="/javascripts/reviews.js")
                 if reviews
                     for review in reviews
-                        li=review.review
-                        button(class="review-edit-btn" type="button") Edit
-                        button.delete(id=`${review.id}` type="button") Delete
+                        div.review(id=`${review.id}`)
+                            input(type="hidden", name="reviewId", value=review.id)
+                            li=review.review
+                            button(class="review-edit-btn" type="button") Edit
+                            button.delete(id=`delete-${review.id}` type="button") Delete

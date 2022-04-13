@@ -34,22 +34,18 @@ window.addEventListener("DOMContentLoaded", () => {
       event.preventDefault();
       event.stopPropagation();
 
-      // const btnId = btn.getAttribute("id");
-
-      //   console.log(btn.id);
-
-      const reviewId = btn.id; // => gets the reviewId of current delete button
-
-      //   try {
-      //     await fetch(`http://localhost:8080/movies/${reviewId}`, {
-      //       method: "DELETE",
-      //       headers: {
-      //         "Content-Type": "application/json",
-      //       },
-      //     });
-      //   } catch (error) {
-      //     console.error(error);
-      //   }
+      const currReview = btn.parentElement;
+      currReview.remove();
+        try {
+          await fetch(`/movies/review/${currReview.id}`, {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+        } catch (error) {
+          console.error(error);
+        }
     });
   });
 
