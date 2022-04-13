@@ -35,7 +35,9 @@ block content
         div
             h2 Reviews
             ul
-                //- script(src="/javascripts/reviews.js")
+                script(src="/javascripts/reviews.js")
                 if reviews
                     for review in reviews
                         li=review.review
+                        button(class="review-edit-btn" type="button") Edit
+                        button.delete(id=`${review.id}` type="button") Delete

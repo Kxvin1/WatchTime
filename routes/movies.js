@@ -98,16 +98,17 @@ router.post(
 
 // update a review
 router.put(
-  "/:movieId/reviews/:reviewId",
+  "/review/:reviewId",
   reviewValidator,
   asyncHandler(async (req, res) => {
     const specificReview = await db.Review.findByPk(req.params.reviewId);
     const { review } = req.body;
+
     if (specificReview) {
       await specificReview.update({
         review,
       });
-      res.json({
+      res.render("movie-detail", {
         specificReview,
       });
     }
@@ -116,7 +117,7 @@ router.put(
 
 // delete a review
 router.delete(
-  "/:movieId/reviews/:reviewId",
+  "/review/delete",
   asyncHandler(async (req, res) => {
     // auth
     const review = await db.Review.findOne({
@@ -130,7 +131,7 @@ router.delete(
 
       if (specificReview) {
         await specificReview.destroy();
-        res.status(200).json({ message: "deleted successfully" });
+        res.status(200).json({ message: "deleted successfully" }); // 204?
       }
     } else {
       res.status(200).json({ message: "deleted unsuccessfully" });
