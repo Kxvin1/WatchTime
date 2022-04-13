@@ -36,12 +36,15 @@ h1 {
 
 .planToWatchColor{
   background-color: red;
+  width: 8px;
 }
 
 .watchingColor{
   background-color: blue;
+  width: 8px;
 }
 
 .haveWatchedColor{
   background-color: green;
+  width: 8px;
 }

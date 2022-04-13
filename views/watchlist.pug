@@ -22,9 +22,41 @@ block content
                     td= genres[movie.genreId - 1].genre
                     td= watchStatus[0]
                     td
-                        button.edit(type='button' name='editBtn') Edit
+                        button.edit(id=`${movie.id}` type='button' name='editBtn') Edit
                         button(type='button' name='deleteBtn') Delete
-                    td.dropdown.hidden
+                    td.dropdown.hidden(id=`select-${movie.id}`)
+                        select(name="watchStatus" value='Plan to Watch')
+                            option(name='Plan to Watch' value='Plan to Watch') Plan to Watch
+                            option(name='Watching' value='Watching') Watching
+                            option(name='Have Watched' value='Have Watched') Have Watched
+            each movie in watchingMoviesShelf
+                tr
+                    td.watchingColor
+                    td
+                        img(src=movie.image)
+                    td= movie.title
+                    td= genres[movie.genreId - 1].genre
+                    td= watchStatus[0]
+                    td
+                        button.edit(id=`${movie.id}` type='button' name='editBtn') Edit
+                        button(type='button' name='deleteBtn') Delete
+                    td.dropdown.hidden(id=`select-${movie.id}`)
+                        select(name="watchStatus" value='Plan to Watch')
+                            option(name='Plan to Watch' value='Plan to Watch') Plan to Watch
+                            option(name='Watching' value='Watching') Watching
+                            option(name='Have Watched' value='Have Watched') Have Watched
+            each movie in haveWatchedMoviesShelf
+                tr
+                    td.haveWatchedColor
+                    td
+                        img(src=movie.image)
+                    td= movie.title
+                    td= genres[movie.genreId - 1].genre
+                    td= watchStatus[0]
+                    td
+                        button.edit(id=`${movie.id}` type='button' name='editBtn') Edit
+                        button(type='button' name='deleteBtn') Delete
+                    td.dropdown.hidden(id=`select-${movie.id}`)
                         select(name="watchStatus" value='Plan to Watch')
                             option(name='Plan to Watch' value='Plan to Watch') Plan to Watch
                             option(name='Watching' value='Watching') Watching
