@@ -13,7 +13,7 @@ async function findShelf (watchStatus, userId) {
             watchStatus: watchStatus
         },
         include: {
-            model: db.Movie
+            model: db.Movie,
         }
     });
 
@@ -25,10 +25,10 @@ router.get('/', asyncHandler( async(req, res, next) => {
     const username = req.session.auth ? req.session.auth.username: 'Demo';
 
     const genres = await db.Genre.findAll();
-    console.log(genres[0].genre);
     const watchStatus = ['Plan to Watch', 'Watching', 'Have Watched'];
 
     const planToWatchMoviesShelf = await findShelf("Plan to Watch", userId);
+    console.log(planToWatchMoviesShelf);
     const watchingMoviesShelf = await findShelf("Watching", userId);
     const haveWatchedMoviesShelf = await findShelf("Have Watched", userId);
 
@@ -64,22 +64,22 @@ router.put('/:watchlistId', asyncHandler( async(req, res, next) => {
     // refresh the watchlist
 }))
 
-router.delete('/:watchlistId', asyncHandler( async(req, res) => {
-    const { shelfId, movieId } = req.body;
+router.delete('/:movieId/:shelfId', asyncHandler( async(req, res) => {
+    const shelfId = req.params.shelfId;
+    const movieId = req.params.movieId;
     const currWatchlist = await db.WatchList.findOne({
         where: {
           shelfId,
           movieId
         }
       })
-    console.log(currWatchlist);
 
-    //   if (currReview) {
-    //     await currReview.destroy()
-    //     res.status(200).json({ message: "Review Deletion Successful" })
-    //   } else {
-    //     res.status(400).json({ message: "Review Deletion Unsuccessful" })
-    //   }
+      if (currWatchlist) {
+        await currWatchlist.destroy()
+        res.status(200).json({ message: "Review Deletion Successful" })
+      } else {
+        res.status(400).json({ message: "Review Deletion Unsuccessful" })
+      }
 }))
 
 module.exports = router;

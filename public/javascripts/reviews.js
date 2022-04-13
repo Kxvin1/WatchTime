@@ -39,24 +39,4 @@ window.addEventListener("DOMContentLoaded", () => {
         }
     });
   });
-
-  //   const deleteButton = document.querySelector(".delete");
-
-  //   deleteButton.addEventListener("click", async (event) => {
-  //     event.stopPropagation();
-  //     event.preventDefault();
-
-  //     console.log(deleteButton.parentElement);
-
-  // try {
-  //   await fetch(`http://localhost:8080/movies/1/reviews`, {
-  //     method: "DELETE",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   });
-  // } catch (error) {
-  //   console.error(error);
-  // }
-  //   });
 });

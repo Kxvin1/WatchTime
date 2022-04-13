@@ -21,12 +21,12 @@ window.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', async (e) => {
             e.preventDefault();
             e.stopPropagation();
-            const currWatchlist = btn.parentElement.parentElement;
-            const watchlistId = currWatchlist.previousElementSibling;
-            console.log(watchlistId);
-            currWatchlist.remove();
+            const currWatchlistEle = btn.parentElement.parentElement;
+            const shelfId = currWatchlistEle.previousElementSibling.value;
+            const movieId = currWatchlistEle.previousElementSibling.previousElementSibling.value;
+            currWatchlistEle.remove();
               try {
-                await fetch(`/watchlist/`, {
+                await fetch(`/watchlist/${movieId}/${shelfId}`, {
                   method: "DELETE",
                   headers: {
                     "Content-Type": "application/json",

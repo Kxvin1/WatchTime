@@ -14,8 +14,8 @@ block content
                 th.edit.hidden
         tbody
             each movie in planToWatchMoviesShelf
-                input(type='hidden' name='shelfId' value=planToWatchMoviesShelfId)
                 input(type='hidden' name='movieId' value=movie.id)
+                input(type='hidden' name='shelfId' value=planToWatchMoviesShelfId)
                 tr(id=`movie-${movie.id}`)
                     td.planToWatchColor
                     td
@@ -32,8 +32,8 @@ block content
                             option(name='Watching' value='Watching') Watching
                             option(name='Have Watched' value='Have Watched') Have Watched
             each movie in watchingMoviesShelf
-                input(type='hidden' name='shelfId' value=watchingMoviesShelfId)
                 input(type='hidden' name='movieId' value=movie.id)
+                input(type='hidden' name='shelfId' value=watchingMoviesShelfId)
                 tr(id=`movie-${movie.id}`)
                     td.watchingColor
                     td
@@ -50,8 +50,8 @@ block content
                             option(name='Watching' value='Watching') Watching
                             option(name='Have Watched' value='Have Watched') Have Watched
             each movie in haveWatchedMoviesShelf
-                input(type='hidden' name='shelfId' value=haveWatchedMoviesShelfId)
                 input(type='hidden' name='movieId' value=movie.id)
+                input(type='hidden' name='shelfId' value=haveWatchedMoviesShelfId)
                 tr(id=`movie-${movie.id}`)
                     td.haveWatchedColor
                     td
