@@ -40,6 +40,9 @@ block content
                     for review in reviews
                         div.review(id=`${review.id}`)
                             input(type="hidden", name="reviewId", value=review.id)
-                            li=review.review
+                            li(id=`review-${review.id}`)=review.review
                             button(class="review-edit-btn" type="button") Edit
                             button.delete(id=`delete-${review.id}` type="button") Delete
+                            div.hidden(id=`edit-form-${review.id}`)
+                                input(id=`new-review-${review.id}` type="text", name="review-edit", value=review.review)
+                                button(id=`edit-review-submit-${review.id}`type="button", name="review-edit-submit") Submit

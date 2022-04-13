@@ -102,11 +102,11 @@ router.put(
   reviewValidator,
   asyncHandler(async (req, res) => {
     const specificReview = await db.Review.findByPk(req.params.reviewId);
-    const { review } = req.body;
+    const { newReview } = req.body;
 
     if (specificReview) {
       await specificReview.update({
-        review,
+        review: newReview,
       });
       res.render("movie-detail", {
         specificReview,

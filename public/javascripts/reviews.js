@@ -4,26 +4,40 @@
 
 window.addEventListener("DOMContentLoaded", () => {
   // edit button
-  const reviewForm = document.querySelector(".review-edit-btn");
+  const reviewFormBtn = document.querySelectorAll(".review-edit-btn");
 
-  reviewForm.addEventListener("click", async (event) => {
-    event.preventDefault();
-    event.stopPropagation();
+  reviewFormBtn.forEach(btn => {
+    btn.addEventListener("click", async (event) => {
+      event.preventDefault();
+      event.stopPropagation();
 
-    const formData = new FormData(reviewForm);
-    const review = formData.get("review");
-    const body = { review };
+      const editForm = document.getElementById(`edit-form-${btn.parentElement.id}`)
+      editForm.setAttribute('class', 'displayed')
 
-    if (!review.length) {
-      return;
-    }
-    const oldReviews = await fetch(`http://localhost:8080/movies`, {
-      method: "POST",
-      body: JSON.stringify(body),
-      header: {
-        "Content-type": "application/json",
-      },
-    });
+      const currReviewEle = document.getElementById(`review-${btn.parentElement.id}`)
+      const newReviewEle = document.getElementById(`new-review-${btn.parentElement.id}`)
+      const newReviewSubmitBtn = document.getElementById(`edit-review-submit-${btn.parentElement.id}`)
+      const currReview = currReviewEle.innerText;
+      const newReview = newReviewEle.innerText;
+
+      newReviewSubmitBtn.addEventListener('click', (e) => {
+        if (!newReview.length) {
+          return;
+        }
+        try{
+          await fetch(`/movies/review/${btn.parentElement.id}`, {
+            method: "PUT",
+            body: JSON.stringify(newReview),
+            header: {
+              "Content-type": "application/json",
+            },
+          });
+        } catch (error) {
+          console.error(error);
+        };
+      });
+      })
+
   });
 
   // delete button
