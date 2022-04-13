@@ -2,6 +2,8 @@ window.addEventListener('DOMContentLoaded', () => {
     // const editBtn = document.getElementsByClassName('edit');
     const editBtn = document.querySelectorAll('.edit');
     const deleteBtn = document.querySelectorAll('.delete')
+    const options = document.querySelectorAll('.watchlist-option');
+
 
     editBtn.forEach(btn => {
         btn.addEventListener('click', (e) => {
@@ -9,12 +11,30 @@ window.addEventListener('DOMContentLoaded', () => {
             e.stopPropagation();
             const btnId = btn.getAttribute('id');
             const select = document.getElementById(`select-${btnId}`)
-            console.log(btnId);
-            console.log(select);
-
             select.setAttribute('class', 'dropdown displayed')
 
         })
+    })
+
+    options.forEach(option => {
+      option.addEventListener('input', async (e) => {
+        const currWatchlistEle = option.parentElement.parentElement;
+        const shelfId = currWatchlistEle.previousElementSibling.value;
+        const movieId = currWatchlistEle.previousElementSibling.previousElementSibling.value;
+        const body = {watchStatus: option.value}
+        try{
+            await fetch(`/watchlist/${movieId}/${shelfId}`, {
+              method: "POST",
+              headers:{
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(body)
+            })
+            window.location.href = '/watchlist'
+          } catch (error) {
+            console.error(error);
+          }
+      })
     })
 
     deleteBtn.forEach(btn => {
