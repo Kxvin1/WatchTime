@@ -97,20 +97,18 @@ router.post(
 );
 
 // update a review
-router.put(
+router.post(
   "/review/:reviewId",
   reviewValidator,
   asyncHandler(async (req, res) => {
+    const { movieId, newReview } = req.body;
     const specificReview = await db.Review.findByPk(req.params.reviewId);
-    const { newReview } = req.body;
 
     if (specificReview) {
       await specificReview.update({
         review: newReview,
       });
-      res.render("movie-detail", {
-        specificReview,
-      });
+      res.redirect(`/movies/${movieId}`);
     }
   })
 );

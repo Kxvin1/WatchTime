@@ -13,29 +13,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
       const editForm = document.getElementById(`edit-form-${btn.parentElement.id}`)
       editForm.setAttribute('class', 'displayed')
-
-      const currReviewEle = document.getElementById(`review-${btn.parentElement.id}`)
-      const newReviewEle = document.getElementById(`new-review-${btn.parentElement.id}`)
-      const newReviewSubmitBtn = document.getElementById(`edit-review-submit-${btn.parentElement.id}`)
-      const currReview = currReviewEle.innerText;
-      const newReview = newReviewEle.innerText;
-
-      newReviewSubmitBtn.addEventListener('click', (e) => {
-        if (!newReview.length) {
-          return;
-        }
-        try{
-          await fetch(`/movies/review/${btn.parentElement.id}`, {
-            method: "PUT",
-            body: JSON.stringify(newReview),
-            header: {
-              "Content-type": "application/json",
-            },
-          });
-        } catch (error) {
-          console.error(error);
-        };
-      });
       })
 
   });
