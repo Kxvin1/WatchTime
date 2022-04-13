@@ -1,7 +1,7 @@
 extends layout.pug
 
 block content
-    h1 `#{username}'s Watch List`
+    h1 #{username}'s Watch List
     table
         thead
             tr
@@ -14,7 +14,9 @@ block content
                 th.edit.hidden
         tbody
             each movie in planToWatchMoviesShelf
-                tr
+                input(type='hidden' name='movieId' value=movie.id)
+                input(type='hidden' name='shelfId' value=planToWatchMoviesShelfId)
+                tr(id=`movie-${movie.id}`)
                     td.planToWatchColor
                     td
                         img(src=movie.image)
@@ -30,32 +32,36 @@ block content
                             option(name='Watching' value='Watching') Watching
                             option(name='Have Watched' value='Have Watched') Have Watched
             each movie in watchingMoviesShelf
-                tr
+                input(type='hidden' name='movieId' value=movie.id)
+                input(type='hidden' name='shelfId' value=watchingMoviesShelfId)
+                tr(id=`movie-${movie.id}`)
                     td.watchingColor
                     td
                         img(src=movie.image)
                     td= movie.title
                     td= genres[movie.genreId - 1].genre
-                    td= watchStatus[0]
+                    td= watchStatus[1]
                     td
                         button.edit(id=`${movie.id}` type='button' name='editBtn') Edit
-                        button(type='button' name='deleteBtn') Delete
+                        button.delete(type='button' name='deleteBtn') Delete
                     td.dropdown.hidden(id=`select-${movie.id}`)
                         select(name="watchStatus" value='Plan to Watch')
                             option(name='Plan to Watch' value='Plan to Watch') Plan to Watch
                             option(name='Watching' value='Watching') Watching
                             option(name='Have Watched' value='Have Watched') Have Watched
             each movie in haveWatchedMoviesShelf
-                tr
+                input(type='hidden' name='movieId' value=movie.id)
+                input(type='hidden' name='shelfId' value=haveWatchedMoviesShelfId)
+                tr(id=`movie-${movie.id}`)
                     td.haveWatchedColor
                     td
                         img(src=movie.image)
                     td= movie.title
                     td= genres[movie.genreId - 1].genre
-                    td= watchStatus[0]
+                    td= watchStatus[2]
                     td
                         button.edit(id=`${movie.id}` type='button' name='editBtn') Edit
-                        button(type='button' name='deleteBtn') Delete
+                        button.delete(type='button' name='deleteBtn') Delete
                     td.dropdown.hidden(id=`select-${movie.id}`)
                         select(name="watchStatus" value='Plan to Watch')
                             option(name='Plan to Watch' value='Plan to Watch') Plan to Watch

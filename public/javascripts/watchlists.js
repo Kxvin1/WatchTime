@@ -18,13 +18,15 @@ window.addEventListener('DOMContentLoaded', () => {
     })
 
     deleteBtn.forEach(btn => {
-        btn.addEventListener('click', (e) => {
+        btn.addEventListener('click', async (e) => {
             e.preventDefault();
             e.stopPropagation();
-            // const currWatchlist = ;
-            currWatchlist.remove();
+            const currWatchlistEle = btn.parentElement.parentElement;
+            const shelfId = currWatchlistEle.previousElementSibling.value;
+            const movieId = currWatchlistEle.previousElementSibling.previousElementSibling.value;
+            currWatchlistEle.remove();
               try {
-                await fetch(`/movies/review/${currReview.id}`, {
+                await fetch(`/watchlist/${movieId}/${shelfId}`, {
                   method: "DELETE",
                   headers: {
                     "Content-Type": "application/json",
