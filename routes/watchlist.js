@@ -25,7 +25,8 @@ router.get('/', asyncHandler( async(req, res, next) => {
     const username = req.session.auth ? req.session.auth.username: 'Demo';
 
     const genres = await db.Genre.findAll();
-    const watchStatus = ['Plan to Watch', 'Watching', 'Have Watched']
+    console.log(genres[0].genre);
+    const watchStatus = ['Plan to Watch', 'Watching', 'Have Watched'];
 
     const planToWatchMoviesShelf = await findShelf("Plan to Watch", userId);
     const watchingMoviesShelf = await findShelf("Watching", userId);
@@ -34,10 +35,13 @@ router.get('/', asyncHandler( async(req, res, next) => {
     res.render('watchlist', {
         username,
         planToWatchMoviesShelf: planToWatchMoviesShelf.Movies,
+        planToWatchMoviesShelfId: planToWatchMoviesShelf.id,
         watchingMoviesShelf: watchingMoviesShelf.Movies,
+        watchingMoviesShelfId: watchingMoviesShelf.id,
         haveWatchedMoviesShelf: haveWatchedMoviesShelf.Movies,
+        haveWatchedMoviesShelfId: haveWatchedMoviesShelf.id,
         genres,
-        watchStatus
+        watchStatus,
     })
 }))
 
@@ -61,18 +65,21 @@ router.put('/:watchlistId', asyncHandler( async(req, res, next) => {
 }))
 
 router.delete('/:watchlistId', asyncHandler( async(req, res) => {
+    const { shelfId, movieId } = req.body;
     const currWatchlist = await db.WatchList.findOne({
         where: {
-          id: req.params.watchlistId
+          shelfId,
+          movieId
         }
       })
+    console.log(currWatchlist);
 
-      if (currReview) {
-        await currReview.destroy()
-        res.status(200).json({ message: "Review Deletion Successful" })
-      } else {
-        res.status(400).json({ message: "Review Deletion Unsuccessful" })
-      }
+    //   if (currReview) {
+    //     await currReview.destroy()
+    //     res.status(200).json({ message: "Review Deletion Successful" })
+    //   } else {
+    //     res.status(400).json({ message: "Review Deletion Unsuccessful" })
+    //   }
 }))
 
 module.exports = router;
