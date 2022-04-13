@@ -27,10 +27,11 @@ block content
                         button.edit(id=`${movie.id}` type='button' name='editBtn') Edit
                         button.delete(type='button' name='deleteBtn') Delete
                     td.dropdown.hidden(id=`select-${movie.id}`)
-                        select(name="watchStatus" value='Plan to Watch')
-                            option(name='Plan to Watch' value='Plan to Watch') Plan to Watch
-                            option(name='Watching' value='Watching') Watching
-                            option(name='Have Watched' value='Have Watched') Have Watched
+                        select.watchlist-option(name="watchStatus" required=true)
+                            option(value='') Please Select a Watch Status
+                            option(id=`option-1-${movie.id}` name='Plan to Watch' value='Plan to Watch') Plan to Watch
+                            option(id=`option-2-${movie.id}` name='Watching' value='Watching') Watching
+                            option(id=`option-3-${movie.id}` name='Have Watched' value='Have Watched') Have Watched
             each movie in watchingMoviesShelf
                 input(type='hidden' name='movieId' value=movie.id)
                 input(type='hidden' name='shelfId' value=watchingMoviesShelfId)
@@ -45,7 +46,8 @@ block content
                         button.edit(id=`${movie.id}` type='button' name='editBtn') Edit
                         button.delete(type='button' name='deleteBtn') Delete
                     td.dropdown.hidden(id=`select-${movie.id}`)
-                        select(name="watchStatus" value='Plan to Watch')
+                        select.watchlist-option(name="watchStatus" required=true)
+                            option(value='') Please Select a Watch Status
                             option(name='Plan to Watch' value='Plan to Watch') Plan to Watch
                             option(name='Watching' value='Watching') Watching
                             option(name='Have Watched' value='Have Watched') Have Watched
@@ -63,7 +65,8 @@ block content
                         button.edit(id=`${movie.id}` type='button' name='editBtn') Edit
                         button.delete(type='button' name='deleteBtn') Delete
                     td.dropdown.hidden(id=`select-${movie.id}`)
-                        select(name="watchStatus" value='Plan to Watch')
+                        select.watchlist-option(name="watchStatus" required=true)
+                            option(value='') Please Select a Watch Status
                             option(name='Plan to Watch' value='Plan to Watch') Plan to Watch
                             option(name='Watching' value='Watching') Watching
                             option(name='Have Watched' value='Have Watched') Have Watched
