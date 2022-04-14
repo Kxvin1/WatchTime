@@ -19,7 +19,8 @@ block content
                 tr(id=`movie-${movie.id}`)
                     td.planToWatchColor
                     td
-                        img(src=movie.image)
+                        a(href=`/movies/${movie.id}`)
+                          img(src=movie.image)
                     td= movie.title
                     td= genres[movie.genreId - 1].genre
                     td= watchStatus[0]
@@ -38,7 +39,8 @@ block content
                 tr(id=`movie-${movie.id}`)
                     td.watchingColor
                     td
-                        img(src=movie.image)
+                        a(href=`/movies/${movie.id}`)
+                           img(src=movie.image)
                     td= movie.title
                     td= genres[movie.genreId - 1].genre
                     td= watchStatus[1]
@@ -57,7 +59,8 @@ block content
                 tr(id=`movie-${movie.id}`)
                     td.haveWatchedColor
                     td
-                        img(src=movie.image)
+                        a(href=`/movies/${movie.id}`)
+                            img(src=movie.image)
                     td= movie.title
                     td= genres[movie.genreId - 1].genre
                     td= watchStatus[2]
