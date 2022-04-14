@@ -12,6 +12,7 @@ block content
                 th Watch Status
                 th.buttons
                 th.edit.hidden
+                th.delete.hidden
         tbody
             each movie in planToWatchMoviesShelf
                 input(type='hidden' name='movieId' value=movie.id)
@@ -33,6 +34,9 @@ block content
                             option(id=`option-1-${movie.id}` name='Plan to Watch' value='Plan to Watch') Plan to Watch
                             option(id=`option-2-${movie.id}` name='Watching' value='Watching') Watching
                             option(id=`option-3-${movie.id}` name='Have Watched' value='Have Watched') Have Watched
+                    td.hidden(id=`delete-watchlist-${movie.id}`)
+                        button(type="button" name='delete-confirm' id=`delete-watchlist-button-${movie.id}`) Confirm
+                        button(type='button' name='delete-cancel' id=`delete-watchlist-cancel-${movie.id}`) Cancel
             each movie in watchingMoviesShelf
                 input(type='hidden' name='movieId' value=movie.id)
                 input(type='hidden' name='shelfId' value=watchingMoviesShelfId)
@@ -53,6 +57,9 @@ block content
                             option(name='Plan to Watch' value='Plan to Watch') Plan to Watch
                             option(name='Watching' value='Watching') Watching
                             option(name='Have Watched' value='Have Watched') Have Watched
+                    td.hidden(id=`delete-watchlist-${movie.id}`)
+                        button(type="button" name='delete-confirm' id=`delete-watchlist-button-${movie.id}`) Confirm
+                        button(type='button' name='delete-cancel' id=`delete-watchlist-cancel-${movie.id}`) Cancel
             each movie in haveWatchedMoviesShelf
                 input(type='hidden' name='movieId' value=movie.id)
                 input(type='hidden' name='shelfId' value=haveWatchedMoviesShelfId)
@@ -73,4 +80,8 @@ block content
                             option(name='Plan to Watch' value='Plan to Watch') Plan to Watch
                             option(name='Watching' value='Watching') Watching
                             option(name='Have Watched' value='Have Watched') Have Watched
+                    td.hidden(id=`delete-watchlist-${movie.id}`)
+                        button(type="button" name='delete-confirm' id=`delete-watchlist-button-${movie.id}`) Confirm
+                        button(type='button' name='delete-cancel' id=`delete-watchlist-cancel-${movie.id}`) Cancel
+
     script(src="/javascripts/watchlists.js")

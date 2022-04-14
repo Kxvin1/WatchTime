@@ -48,3 +48,6 @@ block content
                                 input(type="hidden", name="review", value=review.review)
                                 input(id=`new-review-${review.id}` type="text", name="newReview", value=review.review)
                                 button(id=`edit-review-submit-${review.id}` type="submit", name="review-edit-submit") Submit
+                            div.hidden(id=`delete-review-${review.id}`)
+                                button(type="button" name='delete-confirm' id=`delete-review-button-${review.id}`) Confirm
+                                button(type='button' name='delete-cancel' id=`delete-review-cancel-${review.id}`) Cancel
