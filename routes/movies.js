@@ -12,6 +12,9 @@ const reviewValidator = [
     .withMessage("Review can't be empty.")
     .isLength({ max: 255 })
     .withMessage("Review must be less than 255 characters."),
+]
+
+const newReviewVaidator = [
   check("newReview")
   .exists({ checkFalsy: true })
   .withMessage("Review can't be empty.")
@@ -104,7 +107,7 @@ router.post(
 // update a review
 router.post(
   "/review/:reviewId",
-  reviewValidator,
+  newReviewVaidator,
   asyncHandler(async (req, res) => {
     const { movieId, newReview } = req.body;
     const specificReview = await db.Review.findByPk(req.params.reviewId);
