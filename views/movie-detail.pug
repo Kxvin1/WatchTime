@@ -17,6 +17,16 @@ block content
                 h3=`Runtime: ${movieData.runtime}`
                 h3=`Year: ${movieData.year}`
 
+        div
+            h2 Choose Your Watch Status
+            select.watchlist-option(name="watchStatus" required=true id='watchlist-selection')
+                option(name='Plan to Watch' value='Plan to Watch') Plan to Watch
+                option(name='Watching' value='Watching') Watching
+                option(name='Have Watched' value='Have Watched') Have Watched
+            input(type='hidden' name='movieTitle' value=movieData.title)
+            input(type='hidden' name='movieId' value=movieData.id)
+            button(type='button' name='watchlist-add' id=`add-btn`) Add
+
 
         div
             h2 Leave Your Review

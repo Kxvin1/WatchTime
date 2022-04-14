@@ -1,7 +1,3 @@
-// const movieLink = window.location.href.split("/");
-// console.log("movielink++", movieLink)
-// const movieId = movieLink[4];
-
 window.addEventListener("DOMContentLoaded", () => {
   // edit button
   const reviewFormBtn = document.querySelectorAll(".review-edit-btn");
@@ -33,7 +29,7 @@ window.addEventListener("DOMContentLoaded", () => {
       const deleteConfirmationConfirm = document.getElementById(`delete-review-button-${currReview.id}`);
       const deleteConfirmationCancel = document.getElementById(`delete-review-cancel-${currReview.id}`);
 
-      deleteConfirmationCancel.addEventListener('click', (e) => {
+      deleteConfirmationCancel.addEventListener('click', async (e) => {
         e.preventDefault();
         e.stopPropagation();
         deleteConfirmationDiv.setAttribute('class', 'hidden')
@@ -41,6 +37,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
       deleteConfirmationConfirm.addEventListener('click', async (e) => {
         e.stopPropagation();
+        e.preventDefault();
         currReview.remove();
           try {
             await fetch(`/movies/review/${currReview.id}`, {
@@ -56,4 +53,34 @@ window.addEventListener("DOMContentLoaded", () => {
 
     });
   });
+
+  // Add to Watchlist
+  const watchlistAddBtn = document.getElementById(`add-btn`);
+
+  watchlistAddBtn.addEventListener("click", async (e) => {
+    const watchlistSelection = document.getElementById(`watchlist-selection`);
+    const movieId = watchlistSelection.nextElementSibling.nextElementSibling;
+    const movieTitle = watchlistSelection.nextElementSibling;
+    const body = {
+      movieId: movieId.value,
+      watchStatus: watchlistSelection.value,
+    };
+      try{
+        const res = await fetch('/watchlist', {
+          method: 'POST',
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body)
+        })
+        const test = await res.json();
+        if (test.error) {
+          alert(`${movieTitle.value} is already in your Watchlist!`)
+        } else {
+          alert(`${movieTitle.value} added to your ${watchlistSelection.value} List`)
+        }
+      } catch (error) {
+        console.error(error);
+      }
+  })
 });

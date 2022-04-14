@@ -53,13 +53,10 @@ window.addEventListener('DOMContentLoaded', () => {
             const deleteConfirmationCancel = document.getElementById(`delete-watchlist-cancel-${movieId}`);
 
             deleteConfirmationCancel.addEventListener('click', (e) => {
-              // e.preventDefault();
-              // e.stopPropagation();
               deleteConfirmationDiv.setAttribute('class', 'hidden')
             });
 
             deleteConfirmationConfirm.addEventListener('click', async (e) => {
-              console.log('INSIDE THE DELETION')
               currWatchlistEle.remove();
                 try {
                   await fetch(`/watchlist/${movieId}/${shelfId}`, {

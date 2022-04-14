@@ -75,7 +75,7 @@ router.post(
       include: db.Genre,
     });
 
-    const userId = req.session.auth ? req.session.auth.userId : 1; // todo: edit this later to allow other users to be authenticated
+    const userId = req.session.auth.userId; // todo: edit this later to allow other users to be authenticated
     const reviews = await db.Review.findAll({
       where: { movieId },
       order: [["id", "DESC"]],
