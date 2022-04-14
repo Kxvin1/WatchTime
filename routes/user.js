@@ -48,7 +48,7 @@ router.post('/login', csrfProtection, loginValidators, asyncHandler(async(req, r
 
       if (passwordMatch) {
         loginUser(req, res, user);
-        return res.redirect("/");
+        return res.redirect("/watchlist");
       }
   }
     errors.push("Login failed for the provided email and password.");
@@ -146,7 +146,7 @@ router.post('/register', csrfProtection, userValidators,
       });
 
       loginUser(req, res, user);
-      res.redirect('/');
+      res.redirect('/watchlist');
 
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);

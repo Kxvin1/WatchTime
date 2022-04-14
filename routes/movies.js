@@ -12,6 +12,11 @@ const reviewValidator = [
     .withMessage("Review can't be empty.")
     .isLength({ max: 255 })
     .withMessage("Review must be less than 255 characters."),
+  check("newReview")
+  .exists({ checkFalsy: true })
+  .withMessage("Review can't be empty.")
+  .isLength({ max: 255 })
+  .withMessage("Review must be less than 255 characters."),
 ];
 
 // get all movies
@@ -104,12 +109,39 @@ router.post(
     const { movieId, newReview } = req.body;
     const specificReview = await db.Review.findByPk(req.params.reviewId);
 
-    if (specificReview) {
-      await specificReview.update({
-        review: newReview,
+    const movieData = await db.Movie.findOne({
+      where: {
+        id: movieId,
+      },
+      include: db.Genre,
+    });
+
+    const reviews = await db.Review.findAll({
+      where: { movieId },
+      order: [["id", "DESC"]],
+    });
+
+    const validatorErrors = validationResult(req);
+
+    if (validatorErrors.isEmpty()) {
+      if (specificReview) {
+        await specificReview.update({
+          review: newReview,
+        });
+        res.redirect(`/movies/${movieId}`);
+      }
+    } else {
+      const errors = validatorErrors.array().map((error) => error.msg);
+      res.render("movie-detail", {
+        title: `${movieData.title}`,
+        movieData,
+        reviews,
+        errors,
       });
-      res.redirect(`/movies/${movieId}`);
     }
+
+
+
   })
 );
 
