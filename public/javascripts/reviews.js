@@ -1,6 +1,4 @@
-// const movieLink = window.location.href.split("/");
-// console.log("movielink++", movieLink)
-// const movieId = movieLink[4];
+const { json } = require("sequelize/types");
 
 window.addEventListener("DOMContentLoaded", () => {
   // edit button
@@ -33,7 +31,7 @@ window.addEventListener("DOMContentLoaded", () => {
       const deleteConfirmationConfirm = document.getElementById(`delete-review-button-${currReview.id}`);
       const deleteConfirmationCancel = document.getElementById(`delete-review-cancel-${currReview.id}`);
 
-      deleteConfirmationCancel.addEventListener('click', (e) => {
+      deleteConfirmationCancel.addEventListener('click', async (e) => {
         e.preventDefault();
         e.stopPropagation();
         deleteConfirmationDiv.setAttribute('class', 'hidden')
@@ -41,6 +39,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
       deleteConfirmationConfirm.addEventListener('click', async (e) => {
         e.stopPropagation();
+        e.preventDefault();
         currReview.remove();
           try {
             await fetch(`/movies/review/${currReview.id}`, {
@@ -56,4 +55,29 @@ window.addEventListener("DOMContentLoaded", () => {
 
     });
   });
+
+  // Add to Watchlist
+  const watchlistAddBtn = document.getElementById(`add-btn`);
+
+  watchlistAddBtn.addEventListener("click", async (e) => {
+    const watchlistSelection = document.getElementById(`watchlist-selection`);
+    const movieId = watchlistSelection.previousElementSibling;
+    const body = {
+      movieId: movieId.value,
+      watchStatus: watchlistSelection.value
+    };
+    if(watchlistSelection.value !== '') {
+      try{
+        await fetch('/watchlist/', {
+          method: 'POST',
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body)
+        })
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  })
 });
