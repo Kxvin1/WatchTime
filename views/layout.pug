@@ -10,10 +10,13 @@ html
       ul
         li: a(href='/') Home
         li: a(href='/movies') Movies
-        li: a(href='/watchlist') My Watchlist
-        li: a(href='/user/register') Register
-        li: a(href='/user/login') Login
-        li: a(href='/user/login') Demo
-        li: a(href='/') Logout
+        if locals.authenticated
+          a(href='/watchlist') My Watchlist
+          form(action='/user/logout' method='post')
+            button(type='submit') Logout
+        else
+          //- div
+          a(href='/user/login') Login
+          a(href='/user/register') Register
 
     block content

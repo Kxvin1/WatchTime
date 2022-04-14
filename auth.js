@@ -5,11 +5,11 @@ const loginUser = (req, res, user) => {
     userId: user.id,
     username: user.username
   };
+  req.session.save(() => {
+    res.redirect('/watchlist')
+  })
 };
 
-const logoutUser = (req, res) => {
-  delete req.session.auth;
-};
 
 const requireAuth = (req, res, next) => {
   if (!res.locals.authenticated) {
@@ -21,7 +21,7 @@ const requireAuth = (req, res, next) => {
 const restoreUser = async (req, res, next) => {
   // Log the session object to the console
   // to assist with debugging.
-  // console.log(req.session);
+  console.log(req.session);
 
   if (req.session.auth) {
     const { userId } = req.session.auth;
@@ -42,6 +42,12 @@ const restoreUser = async (req, res, next) => {
     res.locals.authenticated = false;
     next();
   }
+};
+
+const logoutUser = (req, res) => {
+  delete req.session.auth;
+  res.clearCookie("_csrf");
+  res.clearCookie("watchtime.sid", { path: "/" });
 };
 
 module.exports = {

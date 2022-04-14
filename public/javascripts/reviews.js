@@ -65,22 +65,24 @@ window.addEventListener("DOMContentLoaded", () => {
       movieId: movieId.value,
       watchStatus: watchlistSelection.value,
     };
-    console.log(body);
-    // if(watchlistSelection.value !== '') {
       try{
-        await fetch('/watchlist', {
+        const res = await fetch('/watchlist', {
           method: 'POST',
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(body)
         })
-        // .then(res => {
+        const test = await res.json();
+        console.log(res);
+        if (test.error) {
+          alert(`${movieTitle.value} is already in your Watchlist!`)
+        } else {
+          console.log('********************************************');
           alert(`${movieTitle.value} added to your ${watchlistSelection.value} List`)
-        // })
+        }
       } catch (error) {
         console.error(error);
       }
-    // }
   })
 });

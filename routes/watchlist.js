@@ -3,6 +3,7 @@ const { check, validationResult } = require('express-validator');
 
 const db = require('../db/models');
 const { csrfProtection, asyncHandler } = require('./utils');
+const { requireAuth } = require('../auth')
 
 const router = express.Router();
 
@@ -46,16 +47,46 @@ router.get('/', asyncHandler( async(req, res, next) => {
 
 router.post('/', asyncHandler( async(req, res, next) => {
     const { movieId, watchStatus } = req.body;
-    const userId = req.session.auth.userId; // not passing because not logged in (need to create pug file and sign in?)
+    const userId = req.session.auth.userId;
     const shelf = await findShelf(watchStatus, userId);
 
-    const watchlist = await db.WatchList.create({
-        shelfId: shelf.id,
-        movieId
-    })
+    const usersPlanShelf = await findShelf("Plan to Watch", userId);
+    const usersWatchingShelf = await findShelf("Watching", userId);
+    const usersHaveShelf = await findShelf('Have Watched', userId);
 
-    // await watchlist.save();
-    // res.redirect(`/movies/${movieId}`)
+    const planWatchlist = await db.WatchList.findOne({
+        where: {
+            shelfId: usersPlanShelf.id,
+            movieId
+        }
+    });
+
+    const watchingWatchlist = await db.WatchList.findOne({
+        where: {
+            shelfId: usersWatchingShelf.id,
+            movieId
+        }
+    });
+
+    const haveWatchlist = await db.WatchList.findOne({
+        where: {
+            shelfId: usersHaveShelf.id,
+            movieId
+        }
+    });
+
+    if (!planWatchlist && !watchingWatchlist && !haveWatchlist) {
+        const newWatchlist = await db.WatchList.create({
+            shelfId: shelf.id,
+            movieId
+        })
+        return res.json(newWatchlist)
+
+    } else {
+        return res.json({
+            error: "You messed up"
+        })
+    }
 }))
 
 router.post('/:movieId/:shelfId', asyncHandler( async(req, res, next) => {
