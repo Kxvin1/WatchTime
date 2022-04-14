@@ -19,8 +19,9 @@ block content
 
         button(type='submit' name='submit') Login
 
-    //- form(action='/login' method='post')
-    //-     input(type='hidden' name='_csrf' value=csrfToken)
-    //-     input(type='hidden' name='email' value="demo@demo.com")
-    //-     input(type='hidden')
+    form(action='/user/login' method='post')
+        input(type='hidden' name='_csrf' value=csrfToken)
+        input(type='hidden' name='email' value="demo@demo.com")
+        input(type='hidden' name='password' value='Demo123')
+        button(type='submit') Demo User
     a(href='/user/register') Want to create an account?

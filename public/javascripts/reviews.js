@@ -74,11 +74,9 @@ window.addEventListener("DOMContentLoaded", () => {
           body: JSON.stringify(body)
         })
         const test = await res.json();
-        console.log(res);
         if (test.error) {
           alert(`${movieTitle.value} is already in your Watchlist!`)
         } else {
-          console.log('********************************************');
           alert(`${movieTitle.value} added to your ${watchlistSelection.value} List`)
         }
       } catch (error) {

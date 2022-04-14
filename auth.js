@@ -6,7 +6,7 @@ const loginUser = (req, res, user) => {
     username: user.username
   };
   req.session.save(() => {
-    res.redirect('/watchlist')
+  res.redirect('/watchlist')
   })
 };
 
@@ -48,6 +48,7 @@ const logoutUser = (req, res) => {
   delete req.session.auth;
   res.clearCookie("_csrf");
   res.clearCookie("watchtime.sid", { path: "/" });
+  res.redirect('/')
 };
 
 module.exports = {

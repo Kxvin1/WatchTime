@@ -146,7 +146,7 @@ router.post('/register', csrfProtection, userValidators,
       });
 
       loginUser(req, res, user);
-      res.redirect('/watchlist');
+      return;
 
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
@@ -164,7 +164,7 @@ router.post('/register', csrfProtection, userValidators,
 // User Logout
 router.post('/logout', async (req, res) => {
   logoutUser(req, res);
-  res.redirect('/user/login');
+  return;
 })
 
 module.exports = router;
