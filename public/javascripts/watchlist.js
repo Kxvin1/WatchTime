@@ -21,8 +21,8 @@ async function findShelf (watchStatus, userId) {
 }
 
 router.get('/', asyncHandler( async(req, res, next) => {
-    const userId = req.session.auth.userId; // not passing because not logged in (need to create pug file and sign in?)
-    const username = req.session.auth.username;
+    const userId =  req.session.auth.userId; // not passing because not logged in (need to create pug file and sign in?)
+    const username =  req.session.auth.username;
 
     const genres = await db.Genre.findAll();
     const watchStatus = ['Plan to Watch', 'Watching', 'Have Watched'];
@@ -44,10 +44,11 @@ router.get('/', asyncHandler( async(req, res, next) => {
     })
 }))
 
-router.post('/', asyncHandler( async(req, res, next) => {
+router.post('/', csrfProtection, asyncHandler( async(req, res, next) => {
     const { movieId, watchStatus } = req.body;
-    const userId = req.session.auth.userId; // not passing because not logged in (need to create pug file and sign in?)
-    const shelf = await findShelf(watchStatus, userId);
+    const userId =  req.session.auth.userId; // not passing because not logged in (need to create pug file and sign in?)
+    const shelf = await findShelf(userId, watchStatus);
+    console.log(shelf.id, movieId)
 
     const watchlist = await db.WatchList.create({
         shelfId: shelf.id,
@@ -60,7 +61,7 @@ router.post('/', asyncHandler( async(req, res, next) => {
 
 router.post('/:movieId/:shelfId', asyncHandler( async(req, res, next) => {
     // update the watch status for the selected movie
-    const userId = req.session.auth.userId; // not passing because not logged in (need to create pug file and sign in?)
+    const userId =  req.session.auth.userId; // not passing because not logged in (need to create pug file and sign in?)
     const shelfId = req.params.shelfId;
     const movieId = req.params.movieId;
     const { watchStatus } = req.body;

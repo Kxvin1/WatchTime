@@ -1,5 +1,3 @@
-const { json } = require("sequelize/types");
-
 window.addEventListener("DOMContentLoaded", () => {
   // edit button
   const reviewFormBtn = document.querySelectorAll(".review-edit-btn");
@@ -61,23 +59,28 @@ window.addEventListener("DOMContentLoaded", () => {
 
   watchlistAddBtn.addEventListener("click", async (e) => {
     const watchlistSelection = document.getElementById(`watchlist-selection`);
-    const movieId = watchlistSelection.previousElementSibling;
+    const movieId = watchlistSelection.nextElementSibling.nextElementSibling;
+    const movieTitle = watchlistSelection.nextElementSibling;
     const body = {
       movieId: movieId.value,
-      watchStatus: watchlistSelection.value
+      watchStatus: watchlistSelection.value,
     };
-    if(watchlistSelection.value !== '') {
+    console.log(body);
+    // if(watchlistSelection.value !== '') {
       try{
-        await fetch('/watchlist/', {
+        await fetch('/watchlist', {
           method: 'POST',
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(body)
         })
+        // .then(res => {
+          alert(`${movieTitle.value} added to your ${watchlistSelection.value} List`)
+        // })
       } catch (error) {
         console.error(error);
       }
-    }
+    // }
   })
 });

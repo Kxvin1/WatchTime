@@ -48,7 +48,7 @@ router.post('/login', csrfProtection, loginValidators, asyncHandler(async(req, r
 
       if (passwordMatch) {
         loginUser(req, res, user);
-        return res.redirect("/watchlist");
+        return res.redirect("/movies");
       }
   }
     errors.push("Login failed for the provided email and password.");
