@@ -26,17 +26,34 @@ window.addEventListener("DOMContentLoaded", () => {
       event.stopPropagation();
 
       const currReview = btn.parentElement;
-      currReview.remove();
-        try {
-          await fetch(`/movies/review/${currReview.id}`, {
-            method: "DELETE",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          });
-        } catch (error) {
-          console.error(error);
-        }
+      const deleteConfirmationDiv = document.getElementById(`delete-review-${currReview.id}`);
+
+      deleteConfirmationDiv.setAttribute('class', 'displayed')
+
+      const deleteConfirmationConfirm = document.getElementById(`delete-review-button-${currReview.id}`);
+      const deleteConfirmationCancel = document.getElementById(`delete-review-cancel-${currReview.id}`);
+
+      deleteConfirmationCancel.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        deleteConfirmationDiv.setAttribute('class', 'hidden')
+      });
+
+      deleteConfirmationConfirm.addEventListener('click', async (e) => {
+        e.stopPropagation();
+        currReview.remove();
+          try {
+            await fetch(`/movies/review/${currReview.id}`, {
+              method: "DELETE",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            });
+          } catch (error) {
+            console.error(error);
+          }
+      })
+
     });
   });
 });

@@ -44,17 +44,37 @@ window.addEventListener('DOMContentLoaded', () => {
             const currWatchlistEle = btn.parentElement.parentElement;
             const shelfId = currWatchlistEle.previousElementSibling.value;
             const movieId = currWatchlistEle.previousElementSibling.previousElementSibling.value;
-            currWatchlistEle.remove();
-              try {
-                await fetch(`/watchlist/${movieId}/${shelfId}`, {
-                  method: "DELETE",
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                });
-              } catch (error) {
-                console.error(error);
-              }
+
+            const deleteConfirmationDiv = document.getElementById(`delete-watchlist-${movieId}`)
+
+            deleteConfirmationDiv.setAttribute('class', 'displayed');
+
+            const deleteConfirmationConfirm = document.getElementById(`delete-watchlist-button-${movieId}`);
+            const deleteConfirmationCancel = document.getElementById(`delete-watchlist-cancel-${movieId}`);
+
+            deleteConfirmationCancel.addEventListener('click', (e) => {
+              // e.preventDefault();
+              // e.stopPropagation();
+              deleteConfirmationDiv.setAttribute('class', 'hidden')
+            });
+
+            deleteConfirmationConfirm.addEventListener('click', async (e) => {
+              console.log('INSIDE THE DELETION')
+              currWatchlistEle.remove();
+                try {
+                  await fetch(`/watchlist/${movieId}/${shelfId}`, {
+                    method: "DELETE",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                  });
+                } catch (error) {
+                  console.error(error);
+                }
+            })
+
+
+
 
         })
     })
