@@ -340,7 +340,7 @@ module.exports = {
           title: "Kiki's Delivery Service",
           genreId: 2,
           image:
-            "https://www.simpleimageresizer.com/_uploads/photos/1f1aec14/MV5BOTc0ODM1Njk1NF5BMl5BanBnXkFtZTcwMDI5OTEyNw._V1_FMjpg_UX1000__1_259x356.jpg",
+            "https://www.simpleimageresizer.com/_uploads/photos/1f1aec14/MV5BOTc0ODM1Njk1NF5BMl5BanBnXkFtZTcwMDI5OTEyNw._V1_FMjpg_UX1000__2_128x176.jpg",
           imDbRating: 7.8,
           synopsis:
             "A young witch, on her mandatory year of independent life, finds fitting into a new community difficult while she supports herself by running an air courier service.",
@@ -353,7 +353,7 @@ module.exports = {
           title: "Up",
           genreId: 2,
           image:
-            "https://www.simpleimageresizer.com/_uploads/photos/1f1aec14/Bf4kbYR_1_259x356.png",
+            "https://www.simpleimageresizer.com/_uploads/photos/1f1aec14/Bf4kbYR_2_128x176.png",
           imDbRating: 8.2,
           synopsis:
             "78-year-old Carl Fredricksen travels to Paradise Falls in his house equipped with balloons, inadvertently taking a young stowaway.",
@@ -496,7 +496,7 @@ module.exports = {
           title: "The Maze Runner",
           genreId: 1,
           image:
-            "https://www.simpleimageresizer.com/_uploads/photos/1f1aec14/MV5BMjUyNTA3MTAyM15BMl5BanBnXkFtZTgwOTEyMTkyMjE._V1_FMjpg_UX1000__259x356.jpg",
+            "https://www.simpleimageresizer.com/_uploads/photos/1f1aec14/MV5BMjUyNTA3MTAyM15BMl5BanBnXkFtZTgwOTEyMTkyMjE._V1_FMjpg_UX1000__2_128x176.jpg",
           imDbRating: 6.8,
           synopsis:
             "Thomas is deposited in a community of boys after his memory is erased, soon learning they're all trapped in a maze that will require him to join forces with fellow 'runners' for a shot at escape.",
