@@ -11,30 +11,28 @@ block content
                 th(scope='col') Genre
                 th(scope='col') Watch Status
                 th.buttons(scope='col')
-                //- th#editCol.hidden(scope='col')
-                //- th#deleteCol.hidden(scope='col')
         tbody
             each movie in planToWatchMoviesShelf
                 input(type='hidden' name='movieId' value=movie.id)
                 input(type='hidden' name='shelfId' value=planToWatchMoviesShelfId)
                 tr.movie(id=`movie-${movie.id}`)
                     td.planToWatchColor
-                    td
+                    td.movie-block
                         a(href=`/movies/${movie.id}`)
-                          img(src=movie.image)
+                          img.movie-poster(src=movie.image)
                     td= movie.title
                     td= genres[movie.genreId - 1].genre
                     td= watchStatus[0]
-                    td
+                    td.movie-buttons
                         button.edit(id=`${movie.id}` type='button' name='editBtn') Edit
                         button.delete(type='button' name='deleteBtn') Delete
-                        td.dropdown.hidden(id=`select-${movie.id}`)
+                        div.dropdown.hidden(id=`select-${movie.id}`)
                             select.watchlist-option(name="watchStatus" required=true)
                                 option(value='') Please Select a Watch Status
                                 option(id=`option-1-${movie.id}` name='Plan to Watch' value='Plan to Watch') Plan to Watch
                                 option(id=`option-2-${movie.id}` name='Watching' value='Watching') Watching
                                 option(id=`option-3-${movie.id}` name='Have Watched' value='Have Watched') Have Watched
-                        td.hidden(id=`delete-watchlist-${movie.id}`)
+                        div.hidden(id=`delete-watchlist-${movie.id}`)
                             button(type="button" name='delete-confirm' id=`delete-watchlist-button-${movie.id}`) Confirm
                             button(type='button' name='delete-cancel' id=`delete-watchlist-cancel-${movie.id}`) Cancel
             each movie in watchingMoviesShelf
@@ -42,48 +40,47 @@ block content
                 input(type='hidden' name='shelfId' value=watchingMoviesShelfId)
                 tr.movie(id=`movie-${movie.id}`)
                     td.watchingColor
-                    td
+                    td.movie-block
                         a(href=`/movies/${movie.id}`)
-                           img(src=movie.image)
+                           img.movie-poster(src=movie.image)
                     td= movie.title
                     td= genres[movie.genreId - 1].genre
                     td= watchStatus[1]
-                    td
+                    td.movie-buttons
                         button.edit(id=`${movie.id}` type='button' name='editBtn') Edit
                         button.delete(type='button' name='deleteBtn') Delete
-                    td.dropdown.hidden(id=`select-${movie.id}`)
-                        select.watchlist-option(name="watchStatus" required=true)
-                            option(value='') Please Select a Watch Status
-                            option(name='Plan to Watch' value='Plan to Watch') Plan to Watch
-                            option(name='Watching' value='Watching') Watching
-                            option(name='Have Watched' value='Have Watched') Have Watched
-                    td.hidden(id=`delete-watchlist-${movie.id}`)
-                        button(type="button" name='delete-confirm' id=`delete-watchlist-button-${movie.id}`) Confirm
-                        button(type='button' name='delete-cancel' id=`delete-watchlist-cancel-${movie.id}`) Cancel
+                        div.dropdown.hidden(id=`select-${movie.id}`)
+                            select.watchlist-option(name="watchStatus" required=true)
+                                option(value='') Please Select a Watch Status
+                                option(name='Plan to Watch' value='Plan to Watch') Plan to Watch
+                                option(name='Watching' value='Watching') Watching
+                                option(name='Have Watched' value='Have Watched') Have Watched
+                        div.hidden(id=`delete-watchlist-${movie.id}`)
+                            button(type="button" name='delete-confirm' id=`delete-watchlist-button-${movie.id}`) Confirm
+                            button(type='button' name='delete-cancel' id=`delete-watchlist-cancel-${movie.id}`) Cancel
             each movie in haveWatchedMoviesShelf
                 input(type='hidden' name='movieId' value=movie.id)
                 input(type='hidden' name='shelfId' value=haveWatchedMoviesShelfId)
                 tr.movie(id=`movie-${movie.id}`)
                     td.haveWatchedColor
-                    td
+                    td.movie-block
                         a(href=`/movies/${movie.id}`)
-                            img(src=movie.image)
+                            img.movie-poster(src=movie.image)
                     td= movie.title
                     td= genres[movie.genreId - 1].genre
                     td= watchStatus[2]
-                    td
+                    td.movie-buttons
                         button.edit(id=`${movie.id}` type='button' name='editBtn') Edit
                         button.delete(type='button' name='deleteBtn') Delete
-                    td.dropdown.hidden(id=`select-${movie.id}`)
-                        select.watchlist-option(name="watchStatus" required=true)
-                            option(value='') Please Select a Watch Status
-                            option(name='Plan to Watch' value='Plan to Watch') Plan to Watch
-                            option(name='Watching' value='Watching') Watching
-                            option(name='Have Watched' value='Have Watched') Have Watched
-                    td.hidden(id=`delete-watchlist-${movie.id}`)
-                        button(type="button" name='delete-confirm' id=`delete-watchlist-button-${movie.id}`) Confirm
-                        button(type='button' name='delete-cancel' id=`delete-watchlist-cancel-${movie.id}`) Cancel
-
+                        div.dropdown.hidden(id=`select-${movie.id}`)
+                            select.watchlist-option(name="watchStatus" required=true)
+                                option(value='') Please Select a Watch Status
+                                option(name='Plan to Watch' value='Plan to Watch') Plan to Watch
+                                option(name='Watching' value='Watching') Watching
+                                option(name='Have Watched' value='Have Watched') Have Watched
+                        div.hidden(id=`delete-watchlist-${movie.id}`)
+                            button(type="button" name='delete-confirm' id=`delete-watchlist-button-${movie.id}`) Confirm
+                            button(type='button' name='delete-cancel' id=`delete-watchlist-cancel-${movie.id}`) Cancel
     script(src="/javascripts/watchlists.js")
     link(rel='stylesheet' href='/stylesheets/watchlist.css')
     include footer.pug

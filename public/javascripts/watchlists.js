@@ -3,8 +3,6 @@ window.addEventListener('DOMContentLoaded', () => {
     const editBtn = document.querySelectorAll('.edit');
     const deleteBtn = document.querySelectorAll('.delete')
     const options = document.querySelectorAll('.watchlist-option');
-    const editCol = document.getElementById('editCol');
-    const deleteCol = document.getElementById('deleteCol');
 
 
     editBtn.forEach(btn => {
@@ -14,7 +12,6 @@ window.addEventListener('DOMContentLoaded', () => {
             const btnId = btn.getAttribute('id');
             const select = document.getElementById(`select-${btnId}`)
             select.setAttribute('class', 'dropdown displayed')
-            editCol.setAttribute('class', 'displayed')
         })
     })
 
@@ -49,7 +46,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
             const deleteConfirmationDiv = document.getElementById(`delete-watchlist-${movieId}`)
 
-            deleteCol.setAttribute('class', 'displayed');
             deleteConfirmationDiv.setAttribute('class', 'displayed');
 
             const deleteConfirmationConfirm = document.getElementById(`delete-watchlist-button-${movieId}`);
@@ -57,7 +53,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
             deleteConfirmationCancel.addEventListener('click', (e) => {
               deleteConfirmationDiv.setAttribute('class', 'hidden');
-              deleteCol.setAttribute('class', 'hidden')
             });
 
             deleteConfirmationConfirm.addEventListener('click', async (e) => {
