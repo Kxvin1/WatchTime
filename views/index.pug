@@ -8,24 +8,22 @@ append head
 
 block content
   h1= title
-  h2 Top 10 IMDb Rating
-  ul
-    each movie in recentRelease         
+  p.picks Top 10 IMDb Rating
+  ul.home
+    each movie in recentRelease
       li: a(href=`/movies/${movie.id}`)
         img(src=movie.image)
-      p= `${movie.title} (${movie.imDbRating})` 
-  h2 Editor Pick 
-  ul 
-    each movie in editorPick 
-      li: a(href=`/movies/${movie.id}`)  
+        p.title= `${movie.title} (${movie.imDbRating})`
+  p.picks Editor Pick
+  ul.home
+    each movie in editorPick
+      li: a(href=`/movies/${movie.id}`)
         img(src=movie.image)
-      p= `${movie.title} (${movie.imDbRating})`
-  
+        p.title= `${movie.title} (${movie.imDbRating})`
+
   footer
-    ul 
-      li: a(href='https://github.com/Amlovern') Anthony Lovern 
+    ul
+      li: a(href='https://github.com/Amlovern') Anthony Lovern
       li: a(href='https://github.com/ellen20') Jingling Jin
       li: a(href='https://github.com/yuefang323') Fang Yue
       li: a(href='https://github.com/Kxvin1') Kevin Bartolome
-     
-
