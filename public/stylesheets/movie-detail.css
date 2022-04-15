@@ -18,7 +18,7 @@
     background-color: #2e51a2;
     color: white;
     text-align: center;
-    font-size: 48px;
+    font-size: 60px;
     font-weight: bold;
     margin-bottom: 10px;
     display: flex;
@@ -26,15 +26,17 @@
 }
 
 .movie-info {
-    background-color: whitesmoke;
-    color: black;
+    display: flex;
+    flex-direction: column-reverse;
     max-width: 50%;
-    justify-content: flex-end;
+    justify-content: space-between;
+    padding: 5%;
 }
 
-.synopsis, .movie-info {
+.synopsis, .movie-information {
     font-family: Garamond, Franklin, Cambria, serif;
-    font-size: 20px;
+    font-size: 24px;
+    border-bottom: 1px dotted white;
 }
 
 .movie-image-container {
@@ -44,4 +46,12 @@
 
 .movie-header {
     width: 50%;
+}
+
+.synopsis-div *{
+    padding: 2%;
+}
+
+.movie-details *{
+    padding: 1.5%;
 }
