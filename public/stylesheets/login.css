@@ -1,0 +1,118 @@
+* {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+.errors {
+  background-color: #ffb9c2;
+  padding: 2rem;
+  border-radius: 1rem;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+}
+
+.errors ul {
+  list-style: none;
+}
+
+.errors p {
+  font-weight: 400;
+  font-size: 1.2rem;
+  display: block;
+}
+
+.errors p:not(last-child) {
+  margin-bottom: 0.6rem;
+}
+
+.login-form {
+  height: 100vh;
+  display: flex;
+}
+
+.left-side {
+  flex: 65%;
+  padding: 17rem;
+  text-align: center;
+}
+
+.right-side {
+  flex: 0 0 35%;
+  background-image: linear-gradient(
+      rgba(90, 93, 95, 0.72),
+      rgba(44, 62, 80, 0.72)
+    ),
+    url("https://w.wallhaven.cc/full/48/wallhaven-48ed8y.png");
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+}
+
+.login-form form > * {
+  display: block;
+  width: 100%;
+}
+
+.login-form form > *:not(:last-child) {
+  margin-bottom: 1.4rem;
+}
+
+.left-side h2 {
+  margin-bottom: 1.4rem;
+}
+
+.loginBtn {
+  border: none;
+  background-color: #2e51a2;
+  color: #fff;
+  margin-top: 1.2rem;
+  padding: 1.2rem 2rem;
+  border-radius: 0.82rem;
+  width: 100%;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin: 2.5rem 0;
+  transition: all 0.4s ease-in-out;
+}
+
+.loginBtn:hover {
+  transform: scale(1.1);
+  box-shadow: 0.5rem 0.5rem 1rem 0 rgba(31, 27, 27, 0.843);
+}
+
+.loginBtn:active {
+  transform: translateX(-1rem);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.loginBtn.demoUserBtn {
+  background-color: #cb123b;
+}
+
+.demoUserBtn {
+  margin-bottom: 2rem;
+}
+
+form input {
+  border: none;
+  padding: 1rem;
+  border-bottom: 1px black solid;
+}
+
+form input:focus {
+  border: none;
+}
+
+.have-account {
+  font-size: 1rem;
+  color: rgb(127, 121, 121);
+  font-weight: 700;
+  letter-spacing: 0.6px;
+}
