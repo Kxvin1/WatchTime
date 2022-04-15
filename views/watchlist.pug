@@ -1,23 +1,23 @@
 extends layout.pug
 
 block content
-    h1 #{username}'s Watch List
+    h1.watchlist-header #{username}'s Watch List
     table
         thead
-            tr
-                th.watchColor
-                th Image
-                th Movie Title
-                th Genre
-                th Watch Status
-                th.buttons
-                th.edit.hidden
-                th.delete.hidden
+            tr.table-headers
+                th.watchColor(scope='col')
+                th(scope='col') Image
+                th(scope='col') Movie Title
+                th(scope='col') Genre
+                th(scope='col') Watch Status
+                th.buttons(scope='col')
+                th#editCol.hidden(scope='col')
+                th#deleteCol.hidden(scope='col')
         tbody
             each movie in planToWatchMoviesShelf
                 input(type='hidden' name='movieId' value=movie.id)
                 input(type='hidden' name='shelfId' value=planToWatchMoviesShelfId)
-                tr(id=`movie-${movie.id}`)
+                tr.movie(id=`movie-${movie.id}`)
                     td.planToWatchColor
                     td
                         a(href=`/movies/${movie.id}`)
