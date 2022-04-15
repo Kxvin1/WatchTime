@@ -60,13 +60,14 @@ block content
                     div.review(id=`${review.id}`)
                         input(type="hidden", name="reviewId", value=review.id)
                         li.actual-review(id=`review-${review.id}`)=review.review
-                        button(class="review-edit-btn" type="button") Edit
-                        button.delete(id=`delete-${review.id}` type="button") Delete
-                        form.hidden(action=`/movies/review/${review.id}` method='post' id=`edit-form-${review.id}`)
-                            input(type="hidden", name="movieId", value=movieData.id)
-                            input(type="hidden", name="review", value=review.review)
-                            input(id=`new-review-${review.id}` type="text", name="newReview", value=review.review)
-                            button(id=`edit-review-submit-${review.id}` type="submit", name="review-edit-submit") Submit
-                        div.hidden(id=`delete-review-${review.id}`)
-                            button(type="button" name='delete-confirm' id=`delete-review-button-${review.id}`) Confirm
-                            button(type='button' name='delete-cancel' id=`delete-review-cancel-${review.id}`) Cancel
+                        if locals.authenticated
+                            button(class="review-edit-btn" type="button") Edit
+                            button.delete(id=`delete-${review.id}` type="button") Delete
+                            form.hidden(action=`/movies/review/${review.id}` method='post' id=`edit-form-${review.id}`)
+                                input(type="hidden", name="movieId", value=movieData.id)
+                                input(type="hidden", name="review", value=review.review)
+                                input(id=`new-review-${review.id}` type="text", name="newReview", value=review.review)
+                                button(id=`edit-review-submit-${review.id}` type="submit", name="review-edit-submit") Submit
+                            div.hidden(id=`delete-review-${review.id}`)
+                                button(type="button" name='delete-confirm' id=`delete-review-button-${review.id}`) Confirm
+                                button(type='button' name='delete-cancel' id=`delete-review-cancel-${review.id}`) Cancel
