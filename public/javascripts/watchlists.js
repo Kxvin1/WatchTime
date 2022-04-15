@@ -3,8 +3,6 @@ window.addEventListener('DOMContentLoaded', () => {
     const editBtn = document.querySelectorAll('.edit');
     const deleteBtn = document.querySelectorAll('.delete')
     const options = document.querySelectorAll('.watchlist-option');
-    const editCol = document.getElementById('editCol');
-    const deleteCol = document.getElementById('deleteCol');
 
 
     editBtn.forEach(btn => {

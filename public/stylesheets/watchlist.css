@@ -52,16 +52,46 @@ tr td{
 .movie-buttons {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    /* margin: 42% 24%; */
+    align-self: center;
+    /* align-items: center;
+    justify-content: center; */
+    /* margin: 42% 24%;*/
+    height: 100%;
 }
 
 .movie-buttons * {
     /* margin: 2.5% 3%; */
+    /* flex-direction: row; */
+    align-items: center;
+    justify-content: center;
+
     margin: auto;
 }
 
 .movie * {
     height: max-content;
+}
+
+.movie-block {
+    height: 30vh;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+    border-radius: 2rem;
+    margin-bottom: 2rem;
+    object-fit: contain;
+}
+
+.movie-block:active {
+    transform: translateX(-1rem);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.movie-poster {
+    border-radius: 2rem;
+    /* display: block; */
+    height: 100%;
+    width: 50%;
+    /* object-fit: cover; */
+    text-align: center;
 }

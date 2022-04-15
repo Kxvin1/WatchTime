@@ -17,9 +17,9 @@ block content
                 input(type='hidden' name='shelfId' value=planToWatchMoviesShelfId)
                 tr.movie(id=`movie-${movie.id}`)
                     td.planToWatchColor
-                    td
+                    td.movie-block
                         a(href=`/movies/${movie.id}`)
-                          img(src=movie.image)
+                          img.movie-poster(src=movie.image)
                     td= movie.title
                     td= genres[movie.genreId - 1].genre
                     td= watchStatus[0]
@@ -40,9 +40,9 @@ block content
                 input(type='hidden' name='shelfId' value=watchingMoviesShelfId)
                 tr.movie(id=`movie-${movie.id}`)
                     td.watchingColor
-                    td
+                    td.movie-block
                         a(href=`/movies/${movie.id}`)
-                           img(src=movie.image)
+                           img.movie-poster(src=movie.image)
                     td= movie.title
                     td= genres[movie.genreId - 1].genre
                     td= watchStatus[1]
@@ -63,9 +63,9 @@ block content
                 input(type='hidden' name='shelfId' value=haveWatchedMoviesShelfId)
                 tr.movie(id=`movie-${movie.id}`)
                     td.haveWatchedColor
-                    td
+                    td.movie-block
                         a(href=`/movies/${movie.id}`)
-                            img(src=movie.image)
+                            img.movie-poster(src=movie.image)
                     td= movie.title
                     td= genres[movie.genreId - 1].genre
                     td= watchStatus[2]
