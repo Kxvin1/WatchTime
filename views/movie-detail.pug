@@ -17,6 +17,7 @@ block content
                 h3=`Runtime: ${movieData.runtime}`
                 h3=`Year: ${movieData.year}`
 
+    if locals.authenticated
         div
             h2 Choose Your Watch Status
             select.watchlist-option(name="watchStatus" required=true id='watchlist-selection')
@@ -27,7 +28,13 @@ block content
             input(type='hidden' name='movieId' value=movieData.id)
             button(type='button' name='watchlist-add' id=`add-btn`) Add
 
+    if !locals.authenticated
+        div(class='logged-out-div-review')
+            br
+            h2(class='logged-out-please-login-h2') Please login to submit a review
+            div(class='cont')
 
+    else
         div
             h2 Leave Your Review
             if errors
@@ -42,23 +49,23 @@ block content
 
                 input(type="text" name="review" placeholder="Enter Your Review...")
                 button(type="submit" id="reviewSubBtn") Submit Review
-        div
-            h2 Reviews
-            ul
-                script(src="/javascripts/reviews.js")
-                if reviews
-                    for review in reviews
-                        div.review(id=`${review.id}`)
-                            input(type="hidden", name="reviewId", value=review.id)
-                            li(id=`review-${review.id}`)=review.review
-                            button(class="review-edit-btn" type="button") Edit
-                            button.delete(id=`delete-${review.id}` type="button") Delete
-                            form.hidden(action=`/movies/review/${review.id}` method='post' id=`edit-form-${review.id}`)
-                                input(type="hidden", name="movieId", value=movieData.id)
-                                input(type="hidden", name="review", value=review.review)
-                                input(id=`new-review-${review.id}` type="text", name="newReview", value=review.review)
-                                button(id=`edit-review-submit-${review.id}` type="submit", name="review-edit-submit") Submit
-                            div.hidden(id=`delete-review-${review.id}`)
-                                button(type="button" name='delete-confirm' id=`delete-review-button-${review.id}`) Confirm
-                                button(type='button' name='delete-cancel' id=`delete-review-cancel-${review.id}`) Cancel
+    div
+        h2 Reviews
+        ul
+            script(src="/javascripts/reviews.js")
+            if reviews
+                for review in reviews
+                    div.review(id=`${review.id}`)
+                        input(type="hidden", name="reviewId", value=review.id)
+                        li(id=`review-${review.id}`)=review.review
+                        button(class="review-edit-btn" type="button") Edit
+                        button.delete(id=`delete-${review.id}` type="button") Delete
+                        form.hidden(action=`/movies/review/${review.id}` method='post' id=`edit-form-${review.id}`)
+                            input(type="hidden", name="movieId", value=movieData.id)
+                            input(type="hidden", name="review", value=review.review)
+                            input(id=`new-review-${review.id}` type="text", name="newReview", value=review.review)
+                            button(id=`edit-review-submit-${review.id}` type="submit", name="review-edit-submit") Submit
+                        div.hidden(id=`delete-review-${review.id}`)
+                            button(type="button" name='delete-confirm' id=`delete-review-button-${review.id}`) Confirm
+                            button(type='button' name='delete-cancel' id=`delete-review-cancel-${review.id}`) Cancel
     include footer.pug
