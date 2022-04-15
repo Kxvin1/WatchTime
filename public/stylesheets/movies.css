@@ -41,17 +41,3 @@
   height: 100%;
   width: 100%;
 }
-
-.movie-title-text {
-  position: relative;
-  bottom: 0%;
-  /* background-color: #2e51a2; */
-  color: white;
-  padding: 2rem;
-  width: 100%;
-  display: block;
-  border-top-left-radius: 2rem;
-  border-top-right-radius: 2rem;
-  border-bottom-left-radius: 2rem;
-  border-bottom-right-radius: 2rem;
-}
