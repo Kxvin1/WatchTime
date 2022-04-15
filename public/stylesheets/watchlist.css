@@ -1,0 +1,48 @@
+.watchlist-header {
+    background-color: #2e51a2;
+    color: white;
+    text-align: center;
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.planToWatchColor{
+    background-color: #A12F31;
+    width: 8px;
+  }
+
+  .watchingColor{
+    background-color: #26448F;
+    width: 8px;
+  }
+
+  .haveWatchedColor{
+    background-color: #2DB039;
+    width: 8px;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  .table-headers {
+    font-family: Garamond, Franklin, Cambria, serif;
+    font-size: 18px;
+  }
+
+  tbody tr:nth-child(odd) {
+  background-color: white;
+}
+
+tbody tr:nth-child(even) {
+  background-color: whitesmoke;
+}
+
+tr td{
+    text-align: center;
+  }
+
+  .movie {
+    border: 0.1px solid rgba(0, 0, 0, 0.199);
+  }

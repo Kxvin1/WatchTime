@@ -34,53 +34,6 @@ h1 {
   display: table-cell;
 }
 
-.planToWatchColor{
-  background-color: red;
-  width: 8px;
-}
-
-.watchingColor{
-  background-color: blue;
-  width: 8px;
-}
-
-.haveWatchedColor{
-  background-color: green;
-  width: 8px;
-}
-
-.watchlist-header {
-  text-align: center;
-  font-size: 48px;
-  font-weight: bold;
-}
-
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-.table-headers {
-  font-family: Garamond, Franklin, Cambria, serif;
-  font-size: 18px;
-}
-
-tbody tr:nth-child(odd) {
-  background-color: rgb(22, 206, 206);
-}
-
-tbody tr:nth-child(even) {
-  background-color: rgb(248, 191, 86);
-}
-
-tr td{
-  text-align: center;
-}
-
-.movie {
-  border: 2.5px solid black;
-}
-
 .home {
   list-style: none;
   display: grid;
