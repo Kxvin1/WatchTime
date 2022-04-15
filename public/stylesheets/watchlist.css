@@ -11,38 +11,44 @@
     width: 8px;
   }
 
-  .watchingColor{
+.watchingColor{
     background-color: #26448F;
     width: 8px;
-  }
+}
 
-  .haveWatchedColor{
+.haveWatchedColor{
     background-color: #2DB039;
     width: 8px;
-  }
+}
 
-  table {
+table {
     border-collapse: collapse;
     width: 100%;
-  }
+}
 
-  .table-headers {
+.table-headers {
     font-family: Garamond, Franklin, Cambria, serif;
     font-size: 18px;
-  }
+}
 
-  tbody tr:nth-child(odd) {
-  background-color: white;
+tbody tr:nth-child(odd) {
+    background-color: white;
 }
 
 tbody tr:nth-child(even) {
-  background-color: whitesmoke;
+    background-color: whitesmoke;
 }
 
 tr td{
     text-align: center;
-  }
+}
 
-  .movie {
+.movie {
     border: 0.1px solid rgba(0, 0, 0, 0.199);
-  }
+}
+
+.movie-buttons {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}

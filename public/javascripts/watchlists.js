@@ -43,7 +43,7 @@ window.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', async (e) => {
             e.preventDefault();
             e.stopPropagation();
-            const currWatchlistEle = btn.parentElement.parentElement;
+            const currWatchlistEle = btn.parentElement.parentElement.parentElement;
             const shelfId = currWatchlistEle.previousElementSibling.value;
             const movieId = currWatchlistEle.previousElementSibling.previousElementSibling.value;
 
