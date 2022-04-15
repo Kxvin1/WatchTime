@@ -1,0 +1,43 @@
+.movies-header {
+  background-color: #2e51a2;
+  color: white;
+  text-align: center;
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.movie-row {
+  display: grid;
+  justify-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-gap: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+}
+
+.movie-block {
+  height: 20rem;
+  position: relative;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: all 300ms;
+}
+
+.movie-block:hover {
+  transform: translateX(-1rem);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+.movie-block:active {
+  transform: translateX(-0.5rem);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.movie-poster {
+  border-radius: 2rem;
+  display: block;
+  height: 100%;
+  width: 100%;
+}

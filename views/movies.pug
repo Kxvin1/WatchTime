@@ -1,9 +1,11 @@
 extends layout.pug
 
 block content
-    div(class="movie-row")
+    h1.movies-header Movie Database
+    div.movie-row
         each movie in movieDatabase
-            div(class="movie-block")
+            div.movie-block
                 a(href=`/movies/${movie.id}`)
                     img(class="movie-poster" src=movie.image)
+    link(rel='stylesheet' href='/stylesheets/movies.css')
     include footer.pug
