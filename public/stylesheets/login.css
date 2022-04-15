@@ -34,26 +34,35 @@ h2 {
   display: flex;
 }
 
+.left-side {
+  flex: 65%;
+  padding: 15rem;
+  text-align: center;
+}
+
 .right-side {
   flex: 0 0 35%;
   background-image: linear-gradient(
-      rgba(189, 195, 199, 0.72),
+      rgba(90, 93, 95, 0.72),
       rgba(44, 62, 80, 0.72)
     ),
     url("https://w.wallhaven.cc/full/48/wallhaven-48ed8y.png");
   background-position: center;
   background-size: cover;
-}
-
-.left-side {
-  flex: 65%;
-  padding: 20rem;
-  text-align: center;
+  height: 100vh;
 }
 
 .login-form form > * {
   display: block;
   width: 100%;
+}
+
+.login-form form > *:not(:last-child) {
+  margin-bottom: 1.4rem;
+}
+
+.left-side h2 {
+  margin-bottom: 1.4rem;
 }
 
 .loginBtn {
@@ -65,12 +74,12 @@ h2 {
   border-radius: 0.82rem;
   width: 100%;
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   text-transform: uppercase;
   font-size: 1.2rem;
   cursor: pointer;
-  margin: 3rem 0;
-  transition: all 200ms;
+  margin: 2.5rem 0;
+  transition: all 0.4s ease-in-out;
 }
 
 .loginBtn:hover {
@@ -87,21 +96,6 @@ h2 {
   background-color: #cb123b;
 }
 
-.login-form form > *:not(:last-child) {
-  margin-bottom: 1.4rem;
-}
-
-.left-side h2 {
-  margin-bottom: 1.4rem;
-}
-
-.have-account {
-  font-size: 1rem;
-  color: rgb(127, 121, 121);
-  font-weight: 700;
-  letter-spacing: 0.6px;
-}
-
 .demoUserBtn {
   margin-bottom: 2rem;
 }
@@ -109,10 +103,16 @@ h2 {
 form input {
   border: none;
   padding: 1rem;
-  font-family: Inter;
   border-bottom: 1px black solid;
 }
 
 form input:focus {
   border: none;
+}
+
+.have-account {
+  font-size: 1rem;
+  color: rgb(127, 121, 121);
+  font-weight: 700;
+  letter-spacing: 0.6px;
 }
