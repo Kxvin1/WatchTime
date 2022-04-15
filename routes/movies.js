@@ -47,6 +47,13 @@ router.get(
       include: db.Genre,
     });
 
+    let userId;
+    if (req.session.auth){
+      userId = req.session.auth.userId;
+    } else {
+      userId = 0;
+    }
+
     const reviews = await db.Review.findAll({
       where: {
         movieId,
@@ -57,6 +64,7 @@ router.get(
       title: `${movieData.title}`,
       movieData,
       reviews,
+      userId
     });
   })
 );

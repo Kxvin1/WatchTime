@@ -8,7 +8,7 @@ window.addEventListener("DOMContentLoaded", () => {
       event.stopPropagation();
 
       const editForm = document.getElementById(`edit-form-${btn.parentElement.id}`)
-      editForm.setAttribute('class', 'displayed')
+      editForm.setAttribute('class', 'user-review-form displayed')
       })
 
   });
@@ -24,7 +24,7 @@ window.addEventListener("DOMContentLoaded", () => {
       const currReview = btn.parentElement;
       const deleteConfirmationDiv = document.getElementById(`delete-review-${currReview.id}`);
 
-      deleteConfirmationDiv.setAttribute('class', 'displayed')
+      deleteConfirmationDiv.setAttribute('class', 'user-review-delete displayed')
 
       const deleteConfirmationConfirm = document.getElementById(`delete-review-button-${currReview.id}`);
       const deleteConfirmationCancel = document.getElementById(`delete-review-cancel-${currReview.id}`);

@@ -1,25 +1,28 @@
 extends layout.pug
 
 block content
+    link(rel='stylesheet' href='/stylesheets/movie-detail.css')
+
     div(class="movie-page-header")
         div(class="movie-header")
             div(class="movie-title-container")
                 h1(id="movie-title")= movieData.title
-            div(class="movie-image-container")
-                img(class="movie-poster" src=movieData.image)
+            div.movie-block(class="movie-image-container")
+                img.movie-poster(class="movie-poster" src=movieData.image)
         div(class="movie-info")
-            h2(class="synopsis") Synopsis
-            p(class="synopsis-text")= movieData.synopsis
-
+            div.synopsis-div
+                h2(class="synopsis") Synopsis
+                p(class="synopsis-text")= movieData.synopsis
             div(class="movie-details")
+                h2.movie-information Movie Information
                 h3=`Genre: ${movieData.Genre.genre}`
                 h3=`Rating: ${movieData.imDbRating}`
-                h3=`Runtime: ${movieData.runtime}`
+                h3=`Runtime: ${movieData.runtime} Minutes`
                 h3=`Year: ${movieData.year}`
 
     if locals.authenticated
-        div
-            h2 Choose Your Watch Status
+        div.watchlist-interaction
+            h2.watch-status-header Choose Your Watch Status
             select.watchlist-option(name="watchStatus" required=true id='watchlist-selection')
                 option(name='Plan to Watch' value='Plan to Watch') Plan to Watch
                 option(name='Watching' value='Watching') Watching
@@ -30,42 +33,41 @@ block content
 
     if !locals.authenticated
         div(class='logged-out-div-review')
-            br
             h2(class='logged-out-please-login-h2') Please login to submit a review
             div(class='cont')
 
     else
-        div
-            h2 Leave Your Review
+        div.review-entry
+            h2.review-entry-header Leave Your Review
             if errors
                 div(class="review-errors" role="alert")
                     p The following error(s) occured:
                     ul
                         each error in errors
                             li= error
-            form(action=`/movies/review/new`, method="post")
+            form.new-review-form(action=`/movies/review/new`, method="post")
                 input(type="hidden", name="movieId", value=movieData.id)
                 label(for="review")
 
                 input(type="text" name="review" placeholder="Enter Your Review...")
                 button(type="submit" id="reviewSubBtn") Submit Review
-    div
-        h2 Reviews
+    div.user-reviews
+        h2.user-reviews-header Reviews
         ul
             script(src="/javascripts/reviews.js")
             if reviews
                 for review in reviews
                     div.review(id=`${review.id}`)
                         input(type="hidden", name="reviewId", value=review.id)
-                        li(id=`review-${review.id}`)=review.review
-                        button(class="review-edit-btn" type="button") Edit
-                        button.delete(id=`delete-${review.id}` type="button") Delete
-                        form.hidden(action=`/movies/review/${review.id}` method='post' id=`edit-form-${review.id}`)
-                            input(type="hidden", name="movieId", value=movieData.id)
-                            input(type="hidden", name="review", value=review.review)
-                            input(id=`new-review-${review.id}` type="text", name="newReview", value=review.review)
-                            button(id=`edit-review-submit-${review.id}` type="submit", name="review-edit-submit") Submit
-                        div.hidden(id=`delete-review-${review.id}`)
-                            button(type="button" name='delete-confirm' id=`delete-review-button-${review.id}`) Confirm
-                            button(type='button' name='delete-cancel' id=`delete-review-cancel-${review.id}`) Cancel
-    include footer.pug
+                        li.actual-review(id=`review-${review.id}`)=review.review
+                        if locals.authenticated
+                            button(class="review-edit-btn" type="button") Edit
+                            button.delete(id=`delete-${review.id}` type="button") Delete
+                            form.hidden(action=`/movies/review/${review.id}` method='post' id=`edit-form-${review.id}`)
+                                input(type="hidden", name="movieId", value=movieData.id)
+                                input(type="hidden", name="review", value=review.review)
+                                input(id=`new-review-${review.id}` type="text", name="newReview", value=review.review)
+                                button(id=`edit-review-submit-${review.id}` type="submit", name="review-edit-submit") Submit
+                            div.hidden(id=`delete-review-${review.id}`)
+                                button(type="button" name='delete-confirm' id=`delete-review-button-${review.id}`) Confirm
+                                button(type='button' name='delete-cancel' id=`delete-review-cancel-${review.id}`) Cancel

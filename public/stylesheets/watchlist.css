@@ -53,18 +53,12 @@ tr td{
     display: flex;
     flex-direction: column;
     align-self: center;
-    /* align-items: center;
-    justify-content: center; */
-    /* margin: 42% 24%;*/
     height: 100%;
 }
 
 .movie-buttons * {
-    /* margin: 2.5% 3%; */
-    /* flex-direction: row; */
     align-items: center;
     justify-content: center;
-
     margin: auto;
 }
 
@@ -89,9 +83,7 @@ tr td{
 
 .movie-poster {
     border-radius: 2rem;
-    /* display: block; */
     height: 100%;
     width: 50%;
-    /* object-fit: cover; */
     text-align: center;
 }
