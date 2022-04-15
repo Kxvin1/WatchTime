@@ -14,7 +14,6 @@ window.addEventListener('DOMContentLoaded', () => {
             const btnId = btn.getAttribute('id');
             const select = document.getElementById(`select-${btnId}`)
             select.setAttribute('class', 'dropdown displayed')
-            editCol.setAttribute('class', 'displayed')
         })
     })
 
@@ -43,13 +42,12 @@ window.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', async (e) => {
             e.preventDefault();
             e.stopPropagation();
-            const currWatchlistEle = btn.parentElement.parentElement.parentElement;
+            const currWatchlistEle = btn.parentElement.parentElement;
             const shelfId = currWatchlistEle.previousElementSibling.value;
             const movieId = currWatchlistEle.previousElementSibling.previousElementSibling.value;
 
             const deleteConfirmationDiv = document.getElementById(`delete-watchlist-${movieId}`)
 
-            deleteCol.setAttribute('class', 'displayed');
             deleteConfirmationDiv.setAttribute('class', 'displayed');
 
             const deleteConfirmationConfirm = document.getElementById(`delete-watchlist-button-${movieId}`);
@@ -57,7 +55,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
             deleteConfirmationCancel.addEventListener('click', (e) => {
               deleteConfirmationDiv.setAttribute('class', 'hidden');
-              deleteCol.setAttribute('class', 'hidden')
             });
 
             deleteConfirmationConfirm.addEventListener('click', async (e) => {

@@ -28,7 +28,7 @@ table {
 
 .table-headers {
     font-family: Garamond, Franklin, Cambria, serif;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 tbody tr:nth-child(odd) {
@@ -45,10 +45,23 @@ tr td{
 
 .movie {
     border: 0.1px solid rgba(0, 0, 0, 0.199);
+    text-align: center;
+    margin: auto;
 }
 
 .movie-buttons {
     display: flex;
     flex-direction: column;
-    text-align: center;
+    align-items: center;
+    justify-content: center;
+    /* margin: 42% 24%; */
+}
+
+.movie-buttons * {
+    /* margin: 2.5% 3%; */
+    margin: auto;
+}
+
+.movie * {
+    height: max-content;
 }
