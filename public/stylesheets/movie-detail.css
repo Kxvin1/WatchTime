@@ -1,15 +1,14 @@
 .movie-block {
     height: 32rem;
     position: relative;
-    cursor: pointer;
-    transition: all 0.4s ease-in-out;
+    /* cursor: pointer;
+    transition: all 0.4s ease-in-out; */
     border-radius: 2rem;
     margin-bottom: 2rem;
 }
 
 .movie-poster {
     border-radius: 2rem;
-    /* display: block; */
     height: 100%;
     width: 62%;
 }
@@ -42,10 +41,12 @@
 .movie-image-container {
     display: flex;
     justify-content: center;
+    margin-top: 1.5%;
 }
 
 .movie-header {
     width: 50%;
+    margin-top: 1%;
 }
 
 .synopsis-div *{
@@ -54,4 +55,71 @@
 
 .movie-details *{
     padding: 1.5%;
+}
+
+.watchlist-interaction, .logged-out-div-review {
+    background-color: whitesmoke;
+    padding: 1% 0.5%;
+    font-size: 18px;
+    padding-left: 2%;
+}
+
+.watchlist-interaction *{
+    margin: 0.5%;
+}
+
+.review-entry{
+    padding: 1% 0.5%;
+}
+
+.review-entry *{
+    margin: 0.5%;
+}
+
+.user-reviews{
+    padding: 0.5%;
+}
+
+.user-reviews *{
+    text-align: center;
+}
+
+.actual-review{
+    list-style-type: none;
+}
+
+.review{
+    margin: 1%;
+}
+
+.review *{
+    margin: 0.5%;
+}
+
+.review-entry-header{
+    margin-left: 2%;
+}
+
+.watch-status-header, .review-entry-header{
+    font-size: 18px;
+}
+
+.user-reviews-header{
+    font-size: 24px;
+}
+
+.user-review-form{
+    text-align: center;
+    margin: 0.5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-review-delete{
+    text-align: center;
+    margin: 0.5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
