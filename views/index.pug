@@ -9,15 +9,15 @@ append head
 block content
   h1= title
   p.picks Top 10 IMDb Rating
-  ul.home
+  ul.home-ul
     each movie in recentRelease
-      li: a(href=`/movies/${movie.id}`)
+      li.home-li: a(href=`/movies/${movie.id}`)
         img(src=movie.image)
         p.title= `${movie.title} (${movie.imDbRating})`
   p.picks Editor Pick
-  ul.home
+  ul.home-ul
     each movie in editorPick
-      li: a(href=`/movies/${movie.id}`)
+      li.home-li: a(href=`/movies/${movie.id}`)
         img(src=movie.image)
         p.title= `${movie.title} (${movie.imDbRating})`
 
