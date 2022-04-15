@@ -34,16 +34,6 @@ h1 {
   display: table-cell;
 }
 
-.home {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(5, 250px);
-  /* grid-gap: 10px; */
-}
-.home:hover {
-background-color: yellow;
-}
-
 .title {
   width: 150px;
 }
@@ -54,19 +44,20 @@ footer {
  background-color: #2E51A2;
  color: white;
  margin-top: .5em;
+ position: relative;
+ bottom: 0;
+ /* display: flex; */
+ /* flex-shrink: 0.6; */
+ /* bottom: 0; */
 }
 
 .githublinks {
   list-style: none;
   display: flex;
   justify-content: space-evenly;
+
 }
 
 footer a {
   text-decoration: none;
-}
-
-.picks {
-  color: red;
-  font-size: 20px;
 }

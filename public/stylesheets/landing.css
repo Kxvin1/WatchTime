@@ -1,0 +1,55 @@
+.container {
+  display: flex;
+  flex-direction: column;
+/* display: flex;
+  flex-direction: row; */
+}
+.homepage-movie-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.homepage-block {
+  height: 25rem;
+  width: 15rem;
+  margin-right: 5em;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+  border-radius: 2rem;
+  margin-bottom: 2rem;
+}
+
+.homepage-block:active {
+  transform: translateX(-1rem);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+.title, .IMDb-rating {
+  background-color: yellow;
+   display: none;
+}
+
+.homepage-block:hover {
+  transform: scale(1.1);
+  box-shadow: 0.5rem 0.5rem 1rem 0 rgba(31, 27, 27, 0.843);
+  border-radius: 2rem;
+  display: block;
+}
+
+.homepage-img {
+  border-radius: 2rem;
+  display: block;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+
+
+.picks {
+  /* position: relative; */
+
+  color: red;
+  font-size: 20px;
+}

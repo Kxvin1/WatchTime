@@ -7,17 +7,23 @@ append head
   script(src="/javascripts/index.js" type="module" defer)
 
 block content
-  h1= title
-  p.picks Top 10 IMDb Rating
-  ul.home
-    each movie in recentRelease
-      li.home: a(href=`/movies/${movie.id}`)
-        img(src=movie.image)
-        p.title= `${movie.title} (${movie.imDbRating})`
-  p.picks Editor Pick
-  ul.home
-    each movie in editorPick
-      li.home: a(href=`/movies/${movie.id}`)
-        img(src=movie.image)
-        p.title= `${movie.title} (${movie.imDbRating})`
-  include footer.pug
+  div.container
+    h1= title
+    p.picks Top 10 IMDb Rating
+    div.homepage-movie-row
+      each movie in recentRelease
+        div.homepage-block
+          a(href=`/movies/${movie.id}`)
+            img.homepage-img(src=movie.image)
+            p.title= `${movie.title} (${movie.year})`
+            p.IMDb-rating= `IMDb Rating:${movie.imDbRating}`
+
+    p.picks Editor Pick
+    div.homepage-movie-row
+      each movie in editorPick
+        div.homepage-block
+          a(href=`/movies/${movie.id}`)
+            img.homepage-img(src=movie.image)
+            p.title= `${movie.title} (${movie.year})`
+            p.IMDb-rating= `IMDb Rating:${movie.imDbRating}`
+    include footer.pug
