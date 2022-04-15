@@ -51,9 +51,19 @@ background-color: yellow;
 footer {
  padding: 10px;
  width: 100%;
- background-color: red;
+ background-color: #2E51A2;
  color: white;
- text-align: center;
+ margin-top: .5em;
+}
+
+.githublinks {
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+footer a {
+  text-decoration: none;
 }
 
 .picks {
