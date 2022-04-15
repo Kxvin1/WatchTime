@@ -80,3 +80,30 @@ tr td{
 .movie {
   border: 2.5px solid black;
 }
+
+.home {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(5, 250px);
+  /* grid-gap: 10px; */
+}
+.home:hover {
+background-color: yellow;
+}
+
+.title {
+  width: 150px;
+}
+
+footer {
+ padding: 10px;
+ width: 100%;
+ background-color: red;
+ color: white;
+ text-align: center;
+}
+
+.picks {
+  color: red;
+  font-size: 20px;
+}
