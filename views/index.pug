@@ -20,12 +20,4 @@ block content
       li.home: a(href=`/movies/${movie.id}`)
         img(src=movie.image)
         p.title= `${movie.title} (${movie.imDbRating})`
-
-  footer
-    ul 
-      li: a(href='https://github.com/Amlovern' target='_blank') Anthony Lovern 
-      li: a(href='https://github.com/ellen20' target='_blank') Jingling Jin
-      li: a(href='https://github.com/yuefang323' target='_blank') Fang Yue
-      li: a(href='https://github.com/Kxvin1' target='_blank') Kevin Bartolome
-     
-
+  include footer.pug
