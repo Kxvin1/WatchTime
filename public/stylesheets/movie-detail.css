@@ -1,0 +1,47 @@
+.movie-block {
+    height: 32rem;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+    border-radius: 2rem;
+    margin-bottom: 2rem;
+}
+
+.movie-poster {
+    border-radius: 2rem;
+    /* display: block; */
+    height: 100%;
+    width: 62%;
+}
+
+.movie-page-header {
+    background-color: #2e51a2;
+    color: white;
+    text-align: center;
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.movie-info {
+    background-color: whitesmoke;
+    color: black;
+    max-width: 50%;
+    justify-content: flex-end;
+}
+
+.synopsis, .movie-info {
+    font-family: Garamond, Franklin, Cambria, serif;
+    font-size: 20px;
+}
+
+.movie-image-container {
+    display: flex;
+    justify-content: center;
+}
+
+.movie-header {
+    width: 50%;
+}
