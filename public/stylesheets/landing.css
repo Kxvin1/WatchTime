@@ -34,6 +34,7 @@
 
 .title-header {
   font-size: 30px;
+  font-weight: bold;
 }
 
 .homepage-block:hover {
@@ -63,11 +64,11 @@
 }
 
 footer {
-  padding: 10px;
+  padding: 20px;
   width: 100%;
   background-color: #2e51a2;
   color: white;
-  margin-top: 2em;
+  margin-top: 3em;
   position: relative;
   bottom: 0;
 }
@@ -75,7 +76,11 @@ footer {
 .githublinks {
   list-style: none;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+}
+
+.githublinks a {
+  padding: 0 1em;
 }
 
 footer a {
