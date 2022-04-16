@@ -17,7 +17,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     options.forEach(option => {
       option.addEventListener('input', async (e) => {
-        const currWatchlistEle = option.parentElement.parentElement;
+        const currWatchlistEle = option.parentElement.parentElement.parentElement;
         const shelfId = currWatchlistEle.previousElementSibling.value;
         const movieId = currWatchlistEle.previousElementSibling.previousElementSibling.value;
         const body = {watchStatus: option.value}
