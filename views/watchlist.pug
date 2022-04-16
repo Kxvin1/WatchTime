@@ -6,8 +6,8 @@ block content
         thead
             tr.table-headers
                 th.watchColor(scope='col')
-                th(scope='col') Image
-                th(scope='col') Movie Title
+                th(scope='col') Poster
+                th(scope='col') Title
                 th(scope='col') Genre
                 th(scope='col') Watch Status
                 th.buttons(scope='col')
@@ -83,4 +83,3 @@ block content
                             button(type='button' name='delete-cancel' id=`delete-watchlist-cancel-${movie.id}`) Cancel
     script(src="/javascripts/watchlists.js")
     link(rel='stylesheet' href='/stylesheets/watchlist.css')
-    include footer.pug

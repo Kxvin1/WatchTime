@@ -1,13 +1,16 @@
 .container {
   display: flex;
   flex-direction: column;
-/* display: flex;
-  flex-direction: row; */
 }
+
 .homepage-movie-row {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  justify-items: center;
   justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-gap: 4rem;
+  margin-top: 3rem; 
+  margin-left: 2.5rem;
 }
 
 .homepage-block {
@@ -25,9 +28,8 @@
   transform: translateX(-1rem);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
-.title, .IMDb-rating {
-  background-color: yellow;
-   display: none;
+.IMDb-rating { 
+  text-align: center;
 }
 
 .homepage-block:hover {
@@ -45,11 +47,41 @@
   object-fit: cover;
 }
 
-
-
 .picks {
-  /* position: relative; */
-
-  color: red;
-  font-size: 20px;
+  font-size: 35px;
+  font-family: Garamond, Franklin, Cambria, serif;
+  background-color: #2e51a2;
+  color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 20px;
+  padding-left: 2.5rem;
 }
+
+footer {
+  padding: 10px;
+  width: 100%;
+  background-color: #2E51A2;
+  color: white;
+  margin-top: 2em;
+  position: relative;
+  bottom: 0;
+ }
+ 
+ .githublinks {
+   list-style: none;
+   display: flex;
+   justify-content: space-evenly;
+ 
+ }
+ 
+ footer a {
+   text-decoration: none;
+ }
+
+ h1 {
+   display: inline-flex;
+   justify-content: center;
+ }
+ 
+
