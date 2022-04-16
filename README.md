@@ -55,4 +55,10 @@ The frontend of WatchTime is handled with pug, CSS, and Javascript. The backend 
  ![watchList](https://user-images.githubusercontent.com/94598069/163665428-8c49f69b-742b-4cbd-96b5-e9ce010dcc8a.png)
  ### A Specific Movie
  ![specificMovie](https://user-images.githubusercontent.com/94598069/163665432-1b32b269-b9f1-48a2-9ceb-90a19f7dbfa6.png)
+
+## Future Features 
+  - Dark Mode 
+  - Links on movie pages to the trailer
+  - Search feature
+
  
