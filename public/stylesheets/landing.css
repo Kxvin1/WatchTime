@@ -9,7 +9,7 @@
   justify-content: center;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   grid-gap: 4rem;
-  margin-top: 3rem; 
+  margin-top: 3rem;
   margin-left: 2.5rem;
 }
 
@@ -28,8 +28,12 @@
   transform: translateX(-1rem);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
-.IMDb-rating { 
+.IMDb-rating {
   text-align: center;
+}
+
+.title-header {
+  font-size: 30px;
 }
 
 .homepage-block:hover {
@@ -52,7 +56,7 @@
   font-family: Garamond, Franklin, Cambria, serif;
   background-color: #2e51a2;
   color: white;
-  margin-top: 10px;
+  margin-top: 40px;
   margin-bottom: 10px;
   padding: 20px;
   padding-left: 2.5rem;
@@ -61,27 +65,24 @@
 footer {
   padding: 10px;
   width: 100%;
-  background-color: #2E51A2;
+  background-color: #2e51a2;
   color: white;
   margin-top: 2em;
   position: relative;
   bottom: 0;
- }
- 
- .githublinks {
-   list-style: none;
-   display: flex;
-   justify-content: space-evenly;
- 
- }
- 
- footer a {
-   text-decoration: none;
- }
+}
 
- h1 {
-   display: inline-flex;
-   justify-content: center;
- }
- 
+.githublinks {
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+}
 
+footer a {
+  text-decoration: none;
+}
+
+h1 {
+  display: inline-flex;
+  justify-content: center;
+}

@@ -9,7 +9,7 @@ append head
 
 block content
   div.container
-    h1= title
+    h1.title-header= title
     p.picks Top 10 Movies
     div.homepage-movie-row
       each movie in recentRelease
@@ -18,7 +18,7 @@ block content
             img.homepage-img(src=movie.image)
             p.IMDb-rating= `IMDb Rating: ${movie.imDbRating}`
 
-    p.picks Editors' Picks 
+    p.picks Editors' Picks
     div.homepage-movie-row
       each movie in editorPick
         div.homepage-block

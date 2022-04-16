@@ -4,7 +4,7 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: #00b7ff;
   text-decoration: none;
 }
 
@@ -12,8 +12,21 @@ a {
   box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5, h6, a, ol, li, ul, div, span,
-body, header, nav {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+ol,
+li,
+ul,
+div,
+span,
+body,
+header,
+nav {
   font-size: 1rem;
   color: inherit;
   background-color: transparent;
@@ -31,7 +44,7 @@ h1 {
   display: none;
 }
 
-.displayed{
+.displayed {
   display: table-cell;
 }
 
@@ -43,8 +56,17 @@ nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 10px; 
+  margin: 10px;
 }
+
+nav a {
+  font-size: 30px;
+}
+
+nav button {
+  font-size: 30px;
+}
+
 .home-movie a {
   margin: 10px;
   padding: 10px;
@@ -62,4 +84,3 @@ a.my-watchlist {
   margin-top: 0;
   padding-top: 0;
 }
-

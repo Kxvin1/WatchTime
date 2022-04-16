@@ -10,8 +10,8 @@ html
   body
       nav
         div.home-movie
-          a(href='/') Home
-          a(href='/movies') Movies
+          a(class="my-watchlist" href='/') Home
+          a(class="my-watchlist" href='/movies') Movies
         div.login-register
           if locals.authenticated
             a(class="my-watchlist" href='/watchlist') My Watchlist
