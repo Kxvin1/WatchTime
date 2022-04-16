@@ -2,28 +2,27 @@ extends layout
 
 append head
   //- add page specific styles by appending to the head
-  link(rel="stylesheet" href="/stylesheets/index.css")
+  link(rel='stylesheet' href='/stylesheets/reset.css')
+  link(rel="stylesheet" href="/stylesheets/landing.css")
   //- add page specific js
   script(src="/javascripts/index.js" type="module" defer)
 
 block content
   div.container
     h1= title
-    p.picks Top 10 IMDb Rating
+    p.picks Top 10 Movies
     div.homepage-movie-row
       each movie in recentRelease
         div.homepage-block
           a(href=`/movies/${movie.id}`)
             img.homepage-img(src=movie.image)
-            p.title= `${movie.title} (${movie.year})`
-            p.IMDb-rating= `IMDb Rating:${movie.imDbRating}`
+            p.IMDb-rating= `IMDb Rating: ${movie.imDbRating}`
 
-    p.picks Editor Pick
+    p.picks Editors' Picks 
     div.homepage-movie-row
       each movie in editorPick
         div.homepage-block
           a(href=`/movies/${movie.id}`)
             img.homepage-img(src=movie.image)
-            p.title= `${movie.title} (${movie.year})`
-            p.IMDb-rating= `IMDb Rating:${movie.imDbRating}`
+            p.IMDb-rating= `IMDb Rating: ${movie.imDbRating}`
     include footer.pug

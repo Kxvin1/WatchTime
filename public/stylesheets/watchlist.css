@@ -8,17 +8,17 @@
 
 .planToWatchColor{
     background-color: #A12F31;
-    width: 8px;
+    width: 14px;
   }
 
 .watchingColor{
     background-color: #26448F;
-    width: 8px;
+    width: 14px;
 }
 
 .haveWatchedColor{
     background-color: #2DB039;
-    width: 8px;
+    width: 14px;
 }
 
 table {

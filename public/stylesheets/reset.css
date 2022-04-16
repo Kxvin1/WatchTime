@@ -5,6 +5,7 @@ body {
 
 a {
   color: #00B7FF;
+  text-decoration: none;
 }
 
 * {
@@ -38,26 +39,27 @@ h1 {
   width: 150px;
 }
 
-footer {
- padding: 10px;
- width: 100%;
- background-color: #2E51A2;
- color: white;
- margin-top: .5em;
- position: relative;
- bottom: 0;
- /* display: flex; */
- /* flex-shrink: 0.6; */
- /* bottom: 0; */
-}
-
-.githublinks {
-  list-style: none;
+nav {
   display: flex;
-  justify-content: space-evenly;
-
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px; 
+}
+.home-movie a {
+  margin: 10px;
+  padding: 10px;
+}
+.login-register a {
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.login-register {
+  display: inline-flex;
+}
+a.my-watchlist {
+  margin-top: 0;
+  padding-top: 0;
 }
 
-footer a {
-  text-decoration: none;
-}

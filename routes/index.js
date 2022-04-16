@@ -12,10 +12,10 @@ router.get('/', asyncHandler(async (req, res, next) => {
     })
     const editorPick = await db.Movie.findAll({
       where: {
-        title: ["Up", "Kiki's Delivery Service", "Parasite", "The Maze Runner"]
+        title: ["Up", "Kiki's Delivery Service", "Parasite", "The Dark Knight", "Schindler's List"]
       }
     })
-    res.render('index', { title: "Welcome to WatchTime!", recentRelease, editorPick })
+    res.render('index', { title: "Welcome to WatchTime", recentRelease, editorPick })
   })
 );
 
