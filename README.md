@@ -19,20 +19,27 @@ The frontend of WatchTime is handled with pug, CSS, and Javascript. The backend 
 
 ## Features 
 
-  - Home page
+  - Home Page
     - All visitors are able to see top 10 IMDb rated movies that stored in the database.
     - All visitors are able to see editors' recommended movies. 
     - Each movie is linked to a specific movie detail page where a user is suggested to login to gain more authorities. 
-  - Movies page 
+  - Movies Page 
     - List all movies in the database.
     - Each movie is linked to a specific movie detail page where a user is suggested to login to gain more authorities. 
-  - Registration / Login page
-    - Recommendations appear if a user want more actions on a specific movie detail page.
+  - Registration / Login Page
+    - Recommendations appear if a user wants more actions on a specific movie detail page.
     - Demo user account is available 
-  - My Watchlist page 
-  - Users will be able to add movies to their own personal watch list and they will be able to set the status of that movie to any of the following: 
-    - Watched
-    - Want to Watch
-    - Currently Watching
-  - Users will be able to view information about movies as well as reviews left by other users.
-  - Users will also be able to write their own reviews for any movie.
+  - My Watchlist Page (Users' CRUD operations)
+    - Users are able to add movies to their own personal watch list.
+    - Users are able to edit the status of a movie on their own watchlist to any of the following: 
+      - Plan to watch 
+      - Watching 
+      - Have watched
+    - Users are able to delete a movie from their own watchlist. 
+    - Buttons have AJAX functionality.
+  - A Specific Movie Page (Users' CRUD operations) 
+    - Display detail information about a movie.  
+    - Users are able to write their own reviews for any movie.
+    - Users are able to read all other users' reviews to a specific movie. They can also edit or delete their own reviews. 
+    - Users are able to add a movie to their own watchlist by choosing a watch status. 
+    - Buttons have AJAX functionality.
