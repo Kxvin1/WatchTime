@@ -17,27 +17,51 @@ Welcome to check out a live version of WatchTime here: [WatchTime.com](https://w
 
 The frontend of WatchTime is handled with pug, CSS, and Javascript. The backend is built on express.js with a PostgresSQL database. Sequelize is used to manage the database.
 
+## Getting Started
+
+  1. Clone this repository
+  
+    `git clone https://github.com/Kxvin1/WatchTime.git`
+    
+  2. Install dependencies
+  
+    `npm install`
+    
+  3. Create a .env file based on the .env.example given
+  
+  4. Setup your username and database based on what you setup in your .env
+  
+  5. Migrate and Seed models
+  
+    `npx dotenv sequelize db:migrate` && `npx dotenv sequelize db:seed:all`
+    
+  6. Start the app using:
+  
+    `npm start`
+    
+  7. You can use the Demo user or create an account.
+
 ## Features
 
   - Home Page
-    - All visitors are able to see top 10 IMDb rated movies that stored in the database.
-    - All visitors are able to see editors' recommended movies.
+    - All visitors are able to see the top 10 IMDb rated movies that are stored in the database.
+    - All visitors are able to see the editors' recommended movies.
     - Each movie is linked to a specific movie detail page where a user is suggested to login to gain more authorities.
   - Movies Page
-    - List all movies in the database.
+    - Lists all the movies in the database.
     - Each movie is linked to a specific movie detail page where a user is suggested to login to gain more authorities.
   - Registration / Login Page
     - Recommendations appear if a user wants more actions on a specific movie detail page.
-    - Demo user account is available
-  - My Watchlist Page (Users' CRUD operations)
-    - Users are able to add movies to their own personal watch list.
+    - Demo user account is available for those who do not want to register for an account.
+  - My Watchlist Page (User's CRUD operations)
+    - Users are able to add movies to their own personal watchlist.
     - Users are able to edit the status of a movie on their own watchlist to any of the following:
-      - Plan to watch
+      - Plan to Watch
       - Watching
-      - Have watched
+      - Have Watched
     - Users are able to delete a movie from their own watchlist.
     - Buttons have AJAX functionality.
-  - A Specific Movie Page (Users' CRUD operations)
+  - A Specific Movie Page (User's CRUD operations)
     - Display detail information about a movie.
     - Users are able to write their own reviews for any movie.
     - Users are able to read all other users' reviews to a specific movie. They can also edit or delete their own reviews.
